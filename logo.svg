@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <path id="topArc" d="M 60,200 A 140,140 0 0 1 340,200" fill="none"/>
+    <path id="bottomArc" d="M 80,260 A 120,120 0 0 0 320,260" fill="none"/>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E63B12"/>
+      <stop offset="50%" stop-color="#F4A300"/>
+      <stop offset="100%" stop-color="#FFD23F"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="195" fill="#fff" stroke="#1A4FBF" stroke-width="6"/>
+  <circle cx="200" cy="200" r="175" fill="none" stroke="#1A4FBF" stroke-width="2"/>
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#1A4FBF" stroke-width="1.5"/>
+
+  <!-- Top text: AMBASSADORS EDUCATIONAL COMPLEX -->
+  <text font-family="Georgia, serif" font-size="22" font-weight="900" fill="#C0202B" letter-spacing="2">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">AMBASSADORS EDUCATIONAL COMPLEX</textPath>
+  </text>
+
+  <!-- Torch / flame -->
+  <g transform="translate(200,150)">
+    <!-- flame -->
+    <path d="M 0,-55 C -15,-35 -22,-15 -10,-5 C -18,-15 -8,-30 0,-25 C 8,-30 18,-15 10,-5 C 22,-15 15,-35 0,-55 Z" fill="url(#flameGrad)"/>
+    <ellipse cx="0" cy="-12" rx="6" ry="10" fill="#FFE680" opacity="0.8"/>
+    <!-- torch base -->
+    <rect x="-12" y="-5" width="24" height="8" rx="2" fill="#1A4FBF"/>
+    <rect x="-8" y="3" width="16" height="22" fill="#1A4FBF"/>
+    <rect x="-12" y="25" width="24" height="6" rx="2" fill="#1A4FBF"/>
+  </g>
+
+  <!-- Hands (gray) holding book -->
+  <g transform="translate(200,235)">
+    <!-- left hand -->
+    <path d="M -85,-5 Q -95,5 -90,25 L -55,30 Q -40,28 -30,20 L -30,-5 Z" fill="#A8A8A8" stroke="#7A7A7A" stroke-width="1"/>
+    <!-- right hand -->
+    <path d="M 85,-5 Q 95,5 90,25 L 55,30 Q 40,28 30,20 L 30,-5 Z" fill="#A8A8A8" stroke="#7A7A7A" stroke-width="1"/>
+    <!-- book (open) -->
+    <path d="M -60,-15 Q -55,-22 -30,-20 Q -10,-18 0,-10 Q 10,-18 30,-20 Q 55,-22 60,-15 L 60,18 Q 55,12 30,14 Q 10,16 0,22 Q -10,16 -30,14 Q -55,12 -60,18 Z" fill="#E8E8E8" stroke="#7A7A7A" stroke-width="1.5"/>
+    <line x1="0" y1="-10" x2="0" y2="22" stroke="#7A7A7A" stroke-width="1"/>
+    <!-- page lines -->
+    <line x1="-50" y1="-10" x2="-15" y2="-7" stroke="#bbb" stroke-width="0.8"/>
+    <line x1="-50" y1="-3" x2="-15" y2="0" stroke="#bbb" stroke-width="0.8"/>
+    <line x1="-50" y1="4" x2="-15" y2="7" stroke="#bbb" stroke-width="0.8"/>
+    <line x1="15" y1="-7" x2="50" y2="-10" stroke="#bbb" stroke-width="0.8"/>
+    <line x1="15" y1="0" x2="50" y2="-3" stroke="#bbb" stroke-width="0.8"/>
+    <line x1="15" y1="7" x2="50" y2="4" stroke="#bbb" stroke-width="0.8"/>
+  </g>
+
+  <!-- Blue arrow chevrons left and right -->
+  <g fill="#1A4FBF">
+    <polygon points="55,225 95,205 95,215 110,215 110,235 95,235 95,245"/>
+    <polygon points="345,225 305,205 305,215 290,215 290,235 305,235 305,245"/>
+  </g>
+
+  <!-- Bottom banner -->
+  <path d="M 70,300 Q 200,340 330,300 L 330,320 Q 200,360 70,320 Z" fill="#1A4FBF"/>
+  <text x="200" y="325" font-family="'Brush Script MT', cursive" font-size="26" font-weight="bold" fill="#fff" text-anchor="middle" font-style="italic">Faith - Vision - Discipline</text>
+</svg>

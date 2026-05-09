@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &amp; Events — Ambassadors Educational Complex</title>
+<meta name="description" content="Latest news, achievements, events and articles from Ambassadors Educational Complex.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .ncard { background: #fff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: 0.3s; cursor: pointer; }
+  .ncard:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .ncard .img { aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; color: #fff; font: 700 1.2rem var(--font-heading); position: relative; }
+  .ncard .body { padding: 22px; }
+  .ncard .meta { display: flex; gap: 12px; font-size: 12px; color: var(--color-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .ncard .meta .cat { color: var(--color-royal); font-weight: 700; }
+  .ncard h3 { color: var(--color-royal-deep); font-size: 1.1rem; margin-bottom: 10px; line-height: 1.3; }
+  .ncard p { color: var(--color-muted); font-size: 14px; }
+  .ncard .read { display: inline-block; margin-top: 12px; color: var(--color-royal); font-weight: 600; font-size: 13px; }
+  .news-filter { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+  .nf { padding: 8px 18px; border-radius: 999px; border: 2px solid var(--color-line); background: #fff; font: 600 0.85rem var(--font-heading); color: var(--color-royal-deep); cursor: pointer; transition: 0.25s; }
+  .nf:hover { border-color: var(--color-gold); }
+  .nf.active { background: var(--color-royal-deep); color: var(--color-gold); border-color: var(--color-royal-deep); }
+  @media (max-width: 1024px) { .news-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .news-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info">
+    <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+    <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+  </div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.svg" alt="AEC Logo">
+    <div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div>
+  </a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / News</div>
+    <h1 data-i18n="news.h1">News &amp; Events</h1>
+    <p data-i18n="news.lead">Stay informed about the latest happenings, achievements and upcoming events at Ambassadors.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="news-filter">
+      <button class="nf active" data-cat="all" data-i18n="news.f.all">All</button>
+      <button class="nf" data-cat="academic" data-i18n="news.f.academic">Academic</button>
+      <button class="nf" data-cat="event" data-i18n="news.f.event">Events</button>
+      <button class="nf" data-cat="sport" data-i18n="news.f.sport">Sports</button>
+      <button class="nf" data-cat="parent" data-i18n="news.f.parent">For Parents</button>
+    </div>
+
+    <div class="news-grid" id="newsGrid">
+      <article class="ncard" data-cat="academic"><div class="img" style="background: linear-gradient(135deg, #1A4FBF, #061F4D);">🏆 GCE Results</div><div class="body"><div class="meta"><span class="cat">Academic</span><span>· May 2026</span></div><h3>100% pass at GCE A-Level — 18 distinctions</h3><p>Our High School class of 2025 delivered our strongest A-Level results to date.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="event"><div class="img" style="background: linear-gradient(135deg, #F4B400, #D69400); color: #061F4D;">🎉 Cultural Day</div><div class="body"><div class="meta"><span class="cat">Event</span><span>· Apr 2026</span></div><h3>Annual Cultural Day celebrates Cameroon's diversity</h3><p>Students from every region showcased dance, food and traditional dress.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="sport"><div class="img" style="background: linear-gradient(135deg, #1D8348, #0E5C30);">⚽ Football Cup</div><div class="body"><div class="meta"><span class="cat">Sport</span><span>· Mar 2026</span></div><h3>U-15 boys reach inter-school cup final</h3><p>An incredible run by our young squad — semifinal won 3-1 against Lycée Bilingue.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="academic"><div class="img" style="background: linear-gradient(135deg, #C0202B, #8C0F18);">🤖 Robotics</div><div class="body"><div class="meta"><span class="cat">Academic</span><span>· Mar 2026</span></div><h3>Robotics Club wins national STEM challenge</h3><p>Our team of six students placed first nationally with their water-saving prototype.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="parent"><div class="img" style="background: linear-gradient(135deg, #6B4FBB, #3F2A8A);">📖 Parenting</div><div class="body"><div class="meta"><span class="cat">For Parents</span><span>· Feb 2026</span></div><h3>5 ways to support your bilingual learner at home</h3><p>Practical tips from our pedagogical team to help children thrive in two languages.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="event"><div class="img" style="background: linear-gradient(135deg, #0A3D91, #1D8348);">🎓 Speech Day</div><div class="body"><div class="meta"><span class="cat">Event</span><span>· Feb 2026</span></div><h3>Speech &amp; Prize Day honours top achievers</h3><p>87 students received awards across academic, leadership and service categories.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="parent"><div class="img" style="background: linear-gradient(135deg, #F4B400, #C0202B);">📅 Calendar</div><div class="body"><div class="meta"><span class="cat">For Parents</span><span>· Jan 2026</span></div><h3>2026 academic calendar — key dates to remember</h3><p>Term dates, mid-term breaks, exams and PTA meetings for the full school year.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="academic"><div class="img" style="background: linear-gradient(135deg, #061F4D, #F4B400);">📚 Reading</div><div class="body"><div class="meta"><span class="cat">Academic</span><span>· Jan 2026</span></div><h3>New library launches with 5,000 titles</h3><p>Bilingual reading corner inaugurated with support from Ministry of Education.</p><span class="read">Read more →</span></div></article>
+      <article class="ncard" data-cat="event"><div class="img" style="background: linear-gradient(135deg, #1D8348, #1A4FBF);">🌳 Tree Planting</div><div class="body"><div class="meta"><span class="cat">Event</span><span>· Dec 2025</span></div><h3>200 trees planted on Environment Day</h3><p>Every class adopted seedlings as part of our green schools commitment.</p><span class="read">Read more →</span></div></article>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé, Cameroon.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche" data-i18n="lvl1.t">Crèche</a></li>
+      <li><a href="academics.html#primary" data-i18n="lvl3.t">Primary</a></li>
+      <li><a href="academics.html#secondary" data-i18n="lvl4.t">Secondary</a></li>
+      <li><a href="academics.html#high" data-i18n="lvl5.t">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Get in Touch</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  document.querySelectorAll('.nf').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.nf').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      const cat = b.dataset.cat;
+      document.querySelectorAll('.ncard').forEach(c => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

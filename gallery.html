@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Ambassadors Educational Complex</title>
+<meta name="description" content="Photos and videos from classrooms, events, sports, graduation and excursions at Ambassadors Educational Complex, Yaoundé.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0 36px; }
+  .tab { padding: 10px 22px; border-radius: 999px; border: 2px solid var(--color-line); background: #fff; font: 600 0.9rem var(--font-heading); color: var(--color-royal-deep); cursor: pointer; transition: 0.25s; }
+  .tab:hover { border-color: var(--color-gold); }
+  .tab.active { background: var(--color-royal-deep); color: var(--color-gold); border-color: var(--color-royal-deep); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .gal-item { position: relative; aspect-ratio: 4/3; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); transition: 0.3s; }
+  .gal-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .gal-item .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font: 700 1.1rem var(--font-heading); position: relative; }
+  .gal-item .ph::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(6,31,77,0.7)); }
+  .gal-item .label { position: absolute; bottom: 14px; left: 16px; right: 16px; color: #fff; z-index: 2; font: 600 0.95rem var(--font-heading); }
+  .gal-item .badge { position: absolute; top: 12px; left: 12px; background: var(--color-gold); color: var(--color-royal-deep); padding: 4px 10px; border-radius: 999px; font: 700 11px var(--font-heading); text-transform: uppercase; letter-spacing: 0.5px; z-index: 2; }
+  .upload-note { background: linear-gradient(135deg, rgba(244,180,0,0.1), rgba(10,61,145,0.05)); border: 2px dashed var(--color-gold); border-radius: var(--radius-md); padding: 28px; text-align: center; margin-top: 40px; }
+  .upload-note h4 { color: var(--color-royal-deep); margin-bottom: 8px; }
+  .upload-note p { color: var(--color-muted); font-size: 14px; }
+  .upload-note a { color: var(--color-royal); font-weight: 600; }
+  @media (max-width: 1024px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; background: rgba(6,31,77,0.93); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .lb.open { display: flex; }
+  .lb-inner { max-width: 800px; width: 100%; background: #fff; border-radius: var(--radius-md); overflow: hidden; }
+  .lb-img { width: 100%; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; color: #fff; font: 700 1.4rem var(--font-heading); }
+  .lb-body { padding: 22px; }
+  .lb-close { position: absolute; top: 20px; right: 20px; background: var(--color-gold); color: var(--color-royal-deep); border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info">
+    <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+    <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+  </div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.svg" alt="AEC Logo">
+    <div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div>
+  </a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / Gallery</div>
+    <h1 data-i18n="gal.h1">Life in Pictures</h1>
+    <p data-i18n="gal.lead">A glimpse into our classrooms, sports fields, ceremonies and excursions.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tabs">
+      <button class="tab active" data-cat="all" data-i18n="gal.all">All</button>
+      <button class="tab" data-cat="classrooms" data-i18n="gal.classrooms">Classrooms</button>
+      <button class="tab" data-cat="events" data-i18n="gal.events">Events</button>
+      <button class="tab" data-cat="sports" data-i18n="gal.sports">Sports</button>
+      <button class="tab" data-cat="graduation" data-i18n="gal.grad">Graduation</button>
+      <button class="tab" data-cat="excursions" data-i18n="gal.excursions">Excursions</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Placeholder items — replace .ph divs with <img src="..." > to use real photos -->
+      <div class="gal-item" data-cat="classrooms"><div class="ph" style="background: linear-gradient(135deg, #1A4FBF, #0A3D91);"><span style="position:relative;z-index:2">📚 Class 5A</span></div><span class="badge">Class</span><div class="label">Mathematics class — March 2026</div></div>
+      <div class="gal-item" data-cat="events"><div class="ph" style="background: linear-gradient(135deg, #F4B400, #D69400);"><span style="position:relative;z-index:2;color:#0A3D91">🎉 Cultural Day</span></div><span class="badge">Event</span><div class="label">Annual Cultural Day 2025</div></div>
+      <div class="gal-item" data-cat="sports"><div class="ph" style="background: linear-gradient(135deg, #1D8348, #0E5C30);"><span style="position:relative;z-index:2">⚽ Football</span></div><span class="badge">Sport</span><div class="label">Inter-school football tournament</div></div>
+      <div class="gal-item" data-cat="graduation"><div class="ph" style="background: linear-gradient(135deg, #C0202B, #8C0F18);"><span style="position:relative;z-index:2">🎓 Class of 2025</span></div><span class="badge">Graduation</span><div class="label">High school graduation ceremony</div></div>
+      <div class="gal-item" data-cat="excursions"><div class="ph" style="background: linear-gradient(135deg, #6B4FBB, #3F2A8A);"><span style="position:relative;z-index:2">🚌 Kribi Trip</span></div><span class="badge">Trip</span><div class="label">Geography excursion to Kribi</div></div>
+      <div class="gal-item" data-cat="classrooms"><div class="ph" style="background: linear-gradient(135deg, #0A3D91, #061F4D);"><span style="position:relative;z-index:2">🔬 Science Lab</span></div><span class="badge">Class</span><div class="label">Biology practical session</div></div>
+      <div class="gal-item" data-cat="events"><div class="ph" style="background: linear-gradient(135deg, #F4B400, #C0202B);"><span style="position:relative;z-index:2;color:#fff">🎭 School Play</span></div><span class="badge">Event</span><div class="label">Bilingual school play 2025</div></div>
+      <div class="gal-item" data-cat="sports"><div class="ph" style="background: linear-gradient(135deg, #1D8348, #1A4FBF);"><span style="position:relative;z-index:2">🏀 Basketball</span></div><span class="badge">Sport</span><div class="label">Girls basketball finals</div></div>
+      <div class="gal-item" data-cat="classrooms"><div class="ph" style="background: linear-gradient(135deg, #1A4FBF, #1D8348);"><span style="position:relative;z-index:2">🤖 Robotics</span></div><span class="badge">STEM</span><div class="label">Robotics club after-school</div></div>
+      <div class="gal-item" data-cat="events"><div class="ph" style="background: linear-gradient(135deg, #061F4D, #F4B400);"><span style="position:relative;z-index:2;color:#fff">🎤 Speech Day</span></div><span class="badge">Event</span><div class="label">Annual Speech &amp; Prize Day</div></div>
+      <div class="gal-item" data-cat="excursions"><div class="ph" style="background: linear-gradient(135deg, #1D8348, #F4B400);"><span style="position:relative;z-index:2;color:#fff">🌳 Nature Walk</span></div><span class="badge">Trip</span><div class="label">Nature study at Mefou Park</div></div>
+      <div class="gal-item" data-cat="graduation"><div class="ph" style="background: linear-gradient(135deg, #0A3D91, #C0202B);"><span style="position:relative;z-index:2">🎓 Primary Promo</span></div><span class="badge">Graduation</span><div class="label">Primary promotion ceremony</div></div>
+    </div>
+
+    <div class="upload-note">
+      <h4>📸 <span data-i18n="gal.upload.t">Have photos to share?</span></h4>
+      <p data-i18n="gal.upload.p">Parents, students and staff can submit pictures and videos. Send via WhatsApp or email — administrators upload through the secure CMS at <a href="../admin/index.html">/admin</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lightbox">
+  <button class="lb-close" id="lbClose">×</button>
+  <div class="lb-inner">
+    <div class="lb-img" id="lbImg"></div>
+    <div class="lb-body"><h4 id="lbTitle" style="color:var(--color-royal-deep);"></h4></div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé, Cameroon.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche" data-i18n="lvl1.t">Crèche</a></li>
+      <li><a href="academics.html#primary" data-i18n="lvl3.t">Primary</a></li>
+      <li><a href="academics.html#secondary" data-i18n="lvl4.t">Secondary</a></li>
+      <li><a href="academics.html#high" data-i18n="lvl5.t">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Get in Touch</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  // Tab filtering
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const cat = t.dataset.cat;
+      document.querySelectorAll('.gal-item').forEach(it => {
+        it.style.display = (cat === 'all' || it.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbTitle = document.getElementById('lbTitle');
+  document.querySelectorAll('.gal-item').forEach(it => {
+    it.addEventListener('click', () => {
+      const ph = it.querySelector('.ph');
+      lbImg.style.cssText = ph.style.cssText;
+      lbImg.innerHTML = ph.innerHTML;
+      lbTitle.textContent = it.querySelector('.label').textContent;
+      lb.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
+  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+</script>
+</body>
+</html>

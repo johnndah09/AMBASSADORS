@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — AEC CMS</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  body { background: #f0f3f9; }
+  .admin-layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  .sidebar { background: linear-gradient(180deg, var(--color-royal-deep), var(--color-royal)); color: #fff; padding: 24px 0; position: sticky; top: 0; height: 100vh; }
+  .sidebar-brand { padding: 0 22px 22px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px; align-items: center; }
+  .sidebar-brand img { width: 40px; height: 40px; }
+  .sidebar-brand strong { font: 700 0.95rem var(--font-heading); color: var(--color-gold); }
+  .sidebar-brand small { display: block; opacity: 0.7; font-size: 11px; }
+  .sidebar nav { padding: 22px 0; }
+  .sidebar nav a { display: flex; gap: 12px; align-items: center; padding: 12px 22px; color: rgba(255,255,255,0.8); text-decoration: none; font: 500 14px var(--font-heading); transition: 0.2s; border-left: 3px solid transparent; }
+  .sidebar nav a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+  .sidebar nav a.active { background: rgba(244,180,0,0.1); color: var(--color-gold); border-left-color: var(--color-gold); }
+  .sidebar nav .ico { width: 22px; text-align: center; }
+  .sidebar-foot { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 22px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.7; }
+
+  .main { padding: 28px 32px; }
+  .topbar-admin { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+  .topbar-admin h1 { color: var(--color-royal-deep); font-size: 1.6rem; }
+  .user-chip { display: flex; gap: 10px; align-items: center; background: #fff; padding: 8px 16px; border-radius: 999px; box-shadow: var(--shadow-sm); }
+  .user-chip .avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--color-gold), #C0202B); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .user-chip .role { background: var(--color-emerald); color: #fff; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 30px; }
+  .skpi { background: #fff; padding: 22px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+  .skpi .lbl { color: var(--color-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .skpi .val { font: 800 1.8rem var(--font-display); color: var(--color-royal-deep); }
+  .skpi .delta { font-size: 12px; color: var(--color-emerald); margin-top: 4px; }
+
+  .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 22px; }
+  .card { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+  .card-head { padding: 18px 22px; border-bottom: 1px solid var(--color-line); display: flex; justify-content: space-between; align-items: center; }
+  .card-head h3 { color: var(--color-royal-deep); font-size: 1rem; }
+  .card-body { padding: 18px 22px; }
+  .btn-sm { padding: 8px 16px; font-size: 13px; border-radius: 8px; background: var(--color-royal-deep); color: var(--color-gold); border: none; cursor: pointer; font: 600 13px var(--font-heading); }
+  .btn-sm:hover { background: var(--color-royal); }
+  .btn-gold-sm { padding: 8px 16px; font-size: 13px; border-radius: 8px; background: var(--color-gold); color: var(--color-royal-deep); border: none; cursor: pointer; font: 600 13px var(--font-heading); }
+
+  .item-list { list-style: none; padding: 0; }
+  .item-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--color-line); }
+  .item-list li:last-child { border-bottom: none; }
+  .item-list .meta { color: var(--color-muted); font-size: 12px; }
+  .item-list .actions { display: flex; gap: 6px; }
+  .item-list .actions button { padding: 4px 10px; font-size: 12px; background: transparent; border: 1px solid var(--color-line); border-radius: 6px; cursor: pointer; color: var(--color-text); }
+  .item-list .actions button:hover { border-color: var(--color-gold); color: var(--color-royal); }
+  .item-list .actions .del:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  .upload-zone { border: 2px dashed var(--color-line); border-radius: var(--radius-md); padding: 36px 20px; text-align: center; transition: 0.3s; cursor: pointer; }
+  .upload-zone:hover { border-color: var(--color-gold); background: rgba(244,180,0,0.04); }
+  .upload-zone .big { font-size: 2.4rem; margin-bottom: 8px; }
+  .upload-zone h4 { color: var(--color-royal-deep); }
+  .upload-zone p { color: var(--color-muted); font-size: 13px; margin-top: 4px; }
+
+  .form-row { margin-bottom: 14px; }
+  .form-row label { display: block; font-size: 13px; color: var(--color-royal-deep); font-weight: 600; margin-bottom: 4px; }
+  .form-row input, .form-row textarea, .form-row select { width: 100%; padding: 10px 12px; border: 1px solid var(--color-line); border-radius: 8px; font: 14px var(--font-body); }
+
+  .log-row { padding: 8px 0; border-bottom: 1px solid var(--color-line); font-size: 13px; display: grid; grid-template-columns: 90px 80px 1fr; gap: 8px; }
+  .log-row .when { color: var(--color-muted); font-family: monospace; font-size: 12px; }
+  .log-row .who { color: var(--color-royal); font-weight: 600; }
+
+  @media (max-width: 1024px) { .admin-layout { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; } .stats { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="../assets/logo.svg" alt="AEC">
+      <div>
+        <strong>AEC CMS</strong>
+        <small>Admin Dashboard</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#dashboard" class="active"><span class="ico">📊</span> Dashboard</a>
+      <a href="#news"><span class="ico">📰</span> News &amp; Events</a>
+      <a href="#gallery"><span class="ico">🖼️</span> Gallery</a>
+      <a href="#admissions"><span class="ico">📝</span> Admissions</a>
+      <a href="#staff"><span class="ico">👔</span> Staff Profiles</a>
+      <a href="#testimonials"><span class="ico">💬</span> Testimonials</a>
+      <a href="#downloads"><span class="ico">📥</span> Downloads</a>
+      <a href="#users"><span class="ico">👥</span> Users &amp; Roles</a>
+      <a href="#logs"><span class="ico">📜</span> Audit Logs</a>
+      <a href="#settings"><span class="ico">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="../index.html" style="color: var(--color-gold);">← Back to website</a>
+      <p style="margin-top: 6px;">v1.0.0 · Static demo</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar-admin">
+      <h1>Welcome back, Principal</h1>
+      <div class="user-chip">
+        <div class="avatar">P</div>
+        <div>
+          <div style="font-size: 13px; font-weight: 600;">Mr. Principal</div>
+          <span class="role">Super Admin</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="skpi"><div class="lbl">Total Students</div><div class="val">1,247</div><div class="delta">↑ 8% this term</div></div>
+      <div class="skpi"><div class="lbl">Pending Applications</div><div class="val">23</div><div class="delta">↑ 5 this week</div></div>
+      <div class="skpi"><div class="lbl">News Posts</div><div class="val">42</div><div class="delta">↑ 6 this month</div></div>
+      <div class="skpi"><div class="lbl">Gallery Items</div><div class="val">318</div><div class="delta">↑ 12 this week</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <!-- News -->
+        <div class="card" style="margin-bottom: 22px;">
+          <div class="card-head">
+            <h3>📰 Recent News &amp; Events</h3>
+            <button class="btn-gold-sm" onclick="document.getElementById('newsForm').style.display='block'">+ New Post</button>
+          </div>
+          <div class="card-body">
+            <form id="newsForm" style="display:none; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--color-line);" onsubmit="event.preventDefault(); alert('In production: saves to database. Demo only.'); this.reset(); this.style.display='none';">
+              <div class="form-row"><label>Title</label><input type="text" required></div>
+              <div class="form-row"><label>Category</label><select><option>Academic</option><option>Event</option><option>Sport</option><option>For Parents</option></select></div>
+              <div class="form-row"><label>Excerpt</label><textarea rows="3"></textarea></div>
+              <div class="form-row"><label>Featured image</label><input type="file" accept="image/*"></div>
+              <button class="btn-sm" type="submit">Publish</button>
+            </form>
+            <ul class="item-list">
+              <li>
+                <div><strong>100% pass at GCE A-Level</strong><div class="meta">Academic · Published 2 days ago · 124 views</div></div>
+                <div class="actions"><button>Edit</button><button class="del">Delete</button></div>
+              </li>
+              <li>
+                <div><strong>Annual Cultural Day 2026</strong><div class="meta">Event · Published 1 week ago · 89 views</div></div>
+                <div class="actions"><button>Edit</button><button class="del">Delete</button></div>
+              </li>
+              <li>
+                <div><strong>U-15 boys reach inter-school cup final</strong><div class="meta">Sport · Published 2 weeks ago · 67 views</div></div>
+                <div class="actions"><button>Edit</button><button class="del">Delete</button></div>
+              </li>
+              <li>
+                <div><strong>Robotics Club wins national STEM challenge</strong><div class="meta">Academic · Published 3 weeks ago · 145 views</div></div>
+                <div class="actions"><button>Edit</button><button class="del">Delete</button></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Gallery uploader -->
+        <div class="card" style="margin-bottom: 22px;">
+          <div class="card-head"><h3>🖼️ Upload Photos &amp; Videos</h3></div>
+          <div class="card-body">
+            <div class="upload-zone" onclick="document.getElementById('mediaUpload').click()">
+              <div class="big">📤</div>
+              <h4>Drag &amp; drop or click to upload</h4>
+              <p>JPG, PNG, MP4 — max 50 MB per file. Images compressed and watermarked automatically.</p>
+              <input type="file" id="mediaUpload" multiple accept="image/*,video/*" style="display:none" onchange="alert('Demo: '+this.files.length+' file(s) ready. In production: uploads to S3 / Cloudinary / your storage.')">
+            </div>
+            <div class="form-row" style="margin-top: 16px;">
+              <label>Category</label>
+              <select><option>Classrooms</option><option>Events</option><option>Sports</option><option>Graduation</option><option>Excursions</option></select>
+            </div>
+            <div class="form-row"><label>Caption</label><input type="text" placeholder="e.g. Class 5A — Mathematics, March 2026"></div>
+            <button class="btn-sm">Upload &amp; Publish</button>
+          </div>
+        </div>
+
+        <!-- Pending applications -->
+        <div class="card">
+          <div class="card-head"><h3>📝 Pending Admissions Applications</h3></div>
+          <div class="card-body">
+            <ul class="item-list">
+              <li><div><strong>Tabi, Marie-Claire</strong><div class="meta">Form 3 · Submitted 2 days ago</div></div><div class="actions"><button>Review</button><button>Approve</button></div></li>
+              <li><div><strong>Nkomo, Daniel</strong><div class="meta">Class 4 · Submitted 3 days ago</div></div><div class="actions"><button>Review</button><button>Approve</button></div></li>
+              <li><div><strong>Mballa, Sonia</strong><div class="meta">Lower Sixth · Submitted 5 days ago</div></div><div class="actions"><button>Review</button><button>Approve</button></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Quick actions -->
+        <div class="card" style="margin-bottom: 22px;">
+          <div class="card-head"><h3>⚡ Quick Actions</h3></div>
+          <div class="card-body" style="display: grid; gap: 10px;">
+            <button class="btn-sm" style="text-align: left;">📅 Add calendar event</button>
+            <button class="btn-sm" style="text-align: left;">📧 Send newsletter</button>
+            <button class="btn-sm" style="text-align: left;">📊 Export results data</button>
+            <button class="btn-sm" style="text-align: left;">💾 Run backup now</button>
+          </div>
+        </div>
+
+        <!-- Audit log -->
+        <div class="card" style="margin-bottom: 22px;">
+          <div class="card-head"><h3>📜 Recent Activity</h3></div>
+          <div class="card-body">
+            <div class="log-row"><span class="when">14:32</span><span class="who">@principal</span><span>Approved application #A-2026-128</span></div>
+            <div class="log-row"><span class="when">14:18</span><span class="who">@registrar</span><span>Published news: GCE results</span></div>
+            <div class="log-row"><span class="when">13:45</span><span class="who">@principal</span><span>Updated school fees for 2026/27</span></div>
+            <div class="log-row"><span class="when">12:10</span><span class="who">@bursar</span><span>Recorded payment FCFA 350,000</span></div>
+            <div class="log-row"><span class="when">11:02</span><span class="who">@vp</span><span>Uploaded 8 photos to Cultural Day</span></div>
+            <div class="log-row"><span class="when">09:15</span><span class="who">@admin</span><span>Successful login from 41.x.x.x</span></div>
+            <p style="margin-top: 12px;"><a href="#logs" style="color: var(--color-royal); font-size: 13px;">View all logs →</a></p>
+          </div>
+        </div>
+
+        <!-- Roles preview -->
+        <div class="card">
+          <div class="card-head"><h3>👥 Roles &amp; Permissions</h3></div>
+          <div class="card-body">
+            <ul class="item-list">
+              <li><div><strong>Super Admin</strong><div class="meta">Full system access · 2 users</div></div></li>
+              <li><div><strong>Editor</strong><div class="meta">News, gallery, events · 5 users</div></div></li>
+              <li><div><strong>Bursar</strong><div class="meta">Fees &amp; payments · 1 user</div></div></li>
+              <li><div><strong>Registrar</strong><div class="meta">Admissions &amp; records · 2 users</div></div></li>
+              <li><div><strong>Teacher</strong><div class="meta">Gradebook only · 80 users</div></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 30px; padding: 16px 22px; background: rgba(244,180,0,0.1); border-left: 4px solid var(--color-gold); border-radius: 8px; font-size: 13px; color: var(--color-text);">
+      🚀 <strong>Demo notice:</strong> This is a static UI mockup demonstrating the CMS structure. To go live, connect to a backend (Node.js + PostgreSQL, Firebase, Supabase, or Strapi/Directus) for authentication, role-based access, file storage and audit logging. See README for deployment options.
+    </p>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Life — Ambassadors Educational Complex</title>
+<meta name="description" content="Discover school life at Ambassadors — clubs, sports, arts, debate, robotics, community service and a sample daily timetable.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .activities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .activity { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--color-line); padding: 28px 22px; text-align: center; transition: 0.3s; cursor: default; }
+  .activity:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--color-gold); }
+  .activity .ico { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--color-royal), var(--color-royal-deep)); color: var(--color-gold); display: inline-flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 14px; box-shadow: 0 8px 18px rgba(10,61,145,0.3); }
+  .activity h4 { color: var(--color-royal-deep); margin-bottom: 8px; }
+  .activity p { color: var(--color-muted); font-size: 14px; }
+  .timetable { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .timetable th { background: var(--color-royal-deep); color: var(--color-gold); padding: 16px; text-align: left; font: 700 0.95rem var(--font-heading); }
+  .timetable td { padding: 14px 16px; border-bottom: 1px solid var(--color-line); }
+  .timetable tr:last-child td { border-bottom: none; }
+  .timetable tr:hover td { background: rgba(244,180,0,0.06); }
+  .timetable td:first-child { font-weight: 700; color: var(--color-royal); white-space: nowrap; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
+  .pillar { padding: 28px; background: linear-gradient(135deg, #fff, #f7f9fc); border-radius: var(--radius-md); border-left: 5px solid var(--color-gold); }
+  .pillar h4 { color: var(--color-royal-deep); margin-bottom: 10px; font-size: 1.15rem; }
+  @media (max-width: 1024px) { .activities-grid { grid-template-columns: repeat(3, 1fr); } .pillars { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .activities-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .activities-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info">
+    <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+    <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+  </div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.svg" alt="AEC Logo">
+    <div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div>
+  </a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / School Life</div>
+    <h1 data-i18n="sl.h1">A Vibrant School Life</h1>
+    <p data-i18n="sl.lead">Beyond the classroom — clubs, sports, arts, faith and friendship that shape character for life.</p>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="sl.eyebrow">Beyond academics</span>
+      <h2 data-i18n="sl.title">25+ Clubs &amp; Activities</h2>
+      <p data-i18n="sl.intro">Every learner is encouraged to discover their passion. From robotics to choir, from football to debate — there is a place for every talent.</p>
+    </div>
+
+    <div class="activities-grid reveal">
+      <div class="activity"><div class="ico">⚽</div><h4 data-i18n="act.sport">Sports</h4><p data-i18n="act.sport.d">Football, basketball, athletics, handball and martial arts.</p></div>
+      <div class="activity"><div class="ico">🎵</div><h4 data-i18n="act.music">Music &amp; Choir</h4><p data-i18n="act.music.d">Vocal, piano, guitar, traditional drums and school choir.</p></div>
+      <div class="activity"><div class="ico">🎨</div><h4 data-i18n="act.art">Visual Arts</h4><p data-i18n="act.art.d">Painting, drawing, sculpture and African craft traditions.</p></div>
+      <div class="activity"><div class="ico">🤖</div><h4 data-i18n="act.robotics">Robotics &amp; Coding</h4><p data-i18n="act.robotics.d">Hands-on STEM, Arduino, Scratch and competitive robotics.</p></div>
+      <div class="activity"><div class="ico">🗣️</div><h4 data-i18n="act.debate">Debate Club</h4><p data-i18n="act.debate.d">Bilingual debate, public speaking and Model UN.</p></div>
+      <div class="activity"><div class="ico">📖</div><h4 data-i18n="act.spiritual">Spiritual Life</h4><p data-i18n="act.spiritual.d">Morning devotion, chaplaincy and values-based formation.</p></div>
+      <div class="activity"><div class="ico">🤝</div><h4 data-i18n="act.community">Community Service</h4><p data-i18n="act.community.d">Outreach, environmental projects and charity drives.</p></div>
+      <div class="activity"><div class="ico">🎭</div><h4 data-i18n="act.drama">Drama &amp; Theatre</h4><p data-i18n="act.drama.d">Bilingual theatre, storytelling and annual school play.</p></div>
+      <div class="activity"><div class="ico">📰</div><h4 data-i18n="act.media">Media Club</h4><p data-i18n="act.media.d">Journalism, school newsletter and video production.</p></div>
+      <div class="activity"><div class="ico">🌍</div><h4 data-i18n="act.languages">Language Club</h4><p data-i18n="act.languages.d">Spanish, German and Mandarin enrichment.</p></div>
+      <div class="activity"><div class="ico">🧮</div><h4 data-i18n="act.maths">Maths &amp; Olympiads</h4><p data-i18n="act.maths.d">Olympiad training, problem-solving and science fairs.</p></div>
+      <div class="activity"><div class="ico">🚑</div><h4 data-i18n="act.scouts">Scouts &amp; Red Cross</h4><p data-i18n="act.scouts.d">First aid, leadership and community resilience.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section" style="background: linear-gradient(135deg, #f7f9fc, #fff);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="sl.pillars.eb">Our pillars</span>
+      <h2 data-i18n="sl.pillars.t">Faith · Vision · Discipline</h2>
+      <p data-i18n="sl.pillars.i">School life at Ambassadors is built around three timeless pillars that guide every activity, every decision and every relationship.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <h4>🙏 <span data-i18n="sl.faith.t">Faith</span></h4>
+        <p data-i18n="sl.faith.d">Daily devotion, weekly chapel and a values-based culture rooted in moral uprightness and respect for all.</p>
+      </div>
+      <div class="pillar">
+        <h4>🌟 <span data-i18n="sl.vision.t">Vision</span></h4>
+        <p data-i18n="sl.vision.d">We help each learner discover their gifts and dream boldly — career mentorship begins as early as Class 4.</p>
+      </div>
+      <div class="pillar">
+        <h4>🎯 <span data-i18n="sl.disc.t">Discipline</span></h4>
+        <p data-i18n="sl.disc.d">A respectful, structured environment with clear expectations, restorative practice and leadership formation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMETABLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="sl.tt.eb">Sample day</span>
+      <h2 data-i18n="sl.tt.t">A Day at Ambassadors</h2>
+      <p data-i18n="sl.tt.i">Our school day blends rigorous academics with movement, reflection and play.</p>
+    </div>
+    <div class="reveal" style="overflow-x: auto;">
+      <table class="timetable">
+        <thead><tr><th data-i18n="sl.tt.time">Time</th><th data-i18n="sl.tt.act">Activity</th></tr></thead>
+        <tbody>
+          <tr><td>7:00 – 7:30</td><td data-i18n="sl.tt.r1">Arrival &amp; supervised study</td></tr>
+          <tr><td>7:30 – 7:50</td><td data-i18n="sl.tt.r2">Morning assembly &amp; devotion</td></tr>
+          <tr><td>7:50 – 10:30</td><td data-i18n="sl.tt.r3">Core lessons (3 periods)</td></tr>
+          <tr><td>10:30 – 10:50</td><td data-i18n="sl.tt.r4">Snack &amp; recess</td></tr>
+          <tr><td>10:50 – 12:50</td><td data-i18n="sl.tt.r5">Core lessons (2 periods)</td></tr>
+          <tr><td>12:50 – 13:50</td><td data-i18n="sl.tt.r6">Lunch &amp; quiet time</td></tr>
+          <tr><td>13:50 – 15:30</td><td data-i18n="sl.tt.r7">Lessons / lab / library</td></tr>
+          <tr><td>15:30 – 16:30</td><td data-i18n="sl.tt.r8">Clubs, sports &amp; arts</td></tr>
+          <tr><td>16:30 – 17:00</td><td data-i18n="sl.tt.r9">Prep &amp; dismissal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2 data-i18n="cta.title">Ready to Join the Ambassadors Family?</h2>
+    <p data-i18n="cta.lead">Apply online or schedule a campus visit today.</p>
+    <div class="cta-actions">
+      <a href="admissions.html#apply" class="btn btn-gold" data-i18n="cta.apply">Apply Now</a>
+      <a href="contact.html" class="btn btn-outline-light" data-i18n="cta.visit">Book a Visit</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé, Cameroon.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche" data-i18n="lvl1.t">Crèche</a></li>
+      <li><a href="academics.html#primary" data-i18n="lvl3.t">Primary</a></li>
+      <li><a href="academics.html#secondary" data-i18n="lvl4.t">Secondary</a></li>
+      <li><a href="academics.html#high" data-i18n="lvl5.t">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Get in Touch</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

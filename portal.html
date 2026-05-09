@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Portal — Ambassadors Educational Complex</title>
+<meta name="description" content="Secure login portal for parents, students and staff at Ambassadors Educational Complex.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .role-card { background: #fff; padding: 36px 28px; border-radius: var(--radius-md); border: 2px solid var(--color-line); text-align: center; cursor: pointer; transition: 0.3s; }
+  .role-card:hover { transform: translateY(-6px); border-color: var(--color-gold); box-shadow: var(--shadow-md); }
+  .role-card.active { border-color: var(--color-royal); background: linear-gradient(135deg, rgba(10,61,145,0.04), #fff); }
+  .role-card .ico { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--color-royal), var(--color-royal-deep)); color: var(--color-gold); display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 16px; }
+  .role-card h3 { color: var(--color-royal-deep); margin-bottom: 8px; }
+  .role-card p { color: var(--color-muted); font-size: 14px; }
+  .login-box { max-width: 460px; margin: 0 auto; background: #fff; padding: 36px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border-top: 5px solid var(--color-gold); }
+  .login-box h3 { color: var(--color-royal-deep); margin-bottom: 6px; text-align: center; }
+  .login-box .role-label { display: inline-block; background: var(--color-royal); color: var(--color-gold); padding: 4px 14px; border-radius: 999px; font: 700 12px var(--font-heading); text-transform: uppercase; margin-bottom: 14px; }
+  .login-box label { font-size: 13px; color: var(--color-royal-deep); font-weight: 600; }
+  .login-box input { width: 100%; padding: 12px 14px; border: 1px solid var(--color-line); border-radius: 8px; margin: 4px 0 14px; font: 14px var(--font-body); }
+  .login-box input:focus { outline: none; border-color: var(--color-royal); box-shadow: 0 0 0 3px rgba(10,61,145,0.1); }
+  .security-note { background: rgba(29,131,72,0.08); border-left: 4px solid var(--color-emerald); padding: 14px 18px; border-radius: 8px; font-size: 13px; color: var(--color-text); margin-top: 20px; }
+  @media (max-width: 768px) { .portal-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info">
+    <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+    <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+  </div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.svg" alt="AEC Logo">
+    <div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div>
+  </a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / Portal</div>
+    <h1 data-i18n="portal.h1">Secure Login Portal</h1>
+    <p data-i18n="portal.lead">Choose your role to access reports, fees, attendance and notices.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="portal-grid">
+      <div class="role-card active" data-role="parent">
+        <div class="ico">👨‍👩‍👧</div>
+        <h3 data-i18n="portal.parent.t">Parent Portal</h3>
+        <p data-i18n="portal.parent.p">View reports, fees, attendance, homework and school notices for your child.</p>
+      </div>
+      <div class="role-card" data-role="student">
+        <div class="ico">🎒</div>
+        <h3 data-i18n="portal.student.t">Student Portal</h3>
+        <p data-i18n="portal.student.p">Access assignments, timetable, e-learning resources and your grades.</p>
+      </div>
+      <div class="role-card" data-role="staff">
+        <div class="ico">👔</div>
+        <h3 data-i18n="portal.staff.t">Staff Portal</h3>
+        <p data-i18n="portal.staff.p">Internal communication, HR documents, gradebook and lesson resources.</p>
+      </div>
+    </div>
+
+    <div class="login-box">
+      <div style="text-align: center;">
+        <span class="role-label" id="roleLabel">Parent</span>
+      </div>
+      <h3 data-i18n="portal.signin">Sign In to Your Account</h3>
+      <form id="loginForm" novalidate style="margin-top: 20px;">
+        <label data-i18n="portal.user">Email or username</label>
+        <input type="text" name="user" required autocomplete="username">
+        <label data-i18n="portal.pwd">Password</label>
+        <input type="password" name="pwd" required autocomplete="current-password">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 18px;">
+          <label style="font-weight: 400; color: var(--color-text); display: flex; gap: 6px; align-items: center;">
+            <input type="checkbox" name="remember" style="width: auto; margin: 0;"> <span data-i18n="portal.remember">Remember me</span>
+          </label>
+          <a href="#" style="color: var(--color-royal); font-weight: 600;" data-i18n="portal.forgot">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="portal.btn">Sign In Securely</button>
+        <p id="loginStatus" style="margin-top: 14px; font-size: 13px; min-height: 18px; text-align: center;"></p>
+      </form>
+      <div class="security-note">
+        🔐 <strong data-i18n="portal.sec.t">Your security matters.</strong> <span data-i18n="portal.sec.p">All sessions use HTTPS encryption. Account access is logged with timestamp and IP. Activate two-factor authentication in your profile.</span>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 28px; font-size: 14px; color: var(--color-muted);">
+      <span data-i18n="portal.help">Need credentials or help?</span>
+      <a href="contact.html" style="color: var(--color-royal); font-weight: 600;" data-i18n="portal.contact">Contact administration</a>
+      <span data-i18n="portal.or">or message us on</span>
+      <a href="#" data-wa-num="237677637429" style="color: var(--color-emerald); font-weight: 600;">WhatsApp</a>.
+    </p>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé, Cameroon.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche" data-i18n="lvl1.t">Crèche</a></li>
+      <li><a href="academics.html#primary" data-i18n="lvl3.t">Primary</a></li>
+      <li><a href="academics.html#secondary" data-i18n="lvl4.t">Secondary</a></li>
+      <li><a href="academics.html#high" data-i18n="lvl5.t">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Get in Touch</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  const labels = { parent: 'Parent', student: 'Student', staff: 'Staff' };
+  document.querySelectorAll('.role-card').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('.role-card').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      document.getElementById('roleLabel').textContent = labels[c.dataset.role];
+    });
+  });
+  document.getElementById('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const s = document.getElementById('loginStatus');
+    s.style.color = '#0E5C30';
+    s.textContent = '✓ Demo: in production this connects to your secure backend (Firebase Auth, Auth0, or custom JWT). Logging session for audit.';
+  });
+</script>
+</body>
+</html>

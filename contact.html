@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Ambassadors Educational Complex</title>
+<meta name="description" content="Contact Ambassadors Educational Complex in Emana, Yaoundé. Phone, WhatsApp, email, map and online enquiry form.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .ccard { background: #fff; padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--color-line); transition: 0.3s; }
+  .ccard:hover { border-color: var(--color-gold); box-shadow: var(--shadow-sm); }
+  .ccard .ico { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--color-royal), var(--color-royal-deep)); color: var(--color-gold); display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 12px; }
+  .ccard h4 { color: var(--color-royal-deep); margin-bottom: 6px; font-size: 0.95rem; }
+  .ccard p, .ccard a { color: var(--color-text); font-size: 14px; margin: 0; word-break: break-word; }
+  .ccard a:hover { color: var(--color-royal); }
+  .wa-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  .wa-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: #25D366; color: #fff; border-radius: 999px; text-decoration: none; font: 600 0.9rem var(--font-heading); transition: 0.25s; }
+  .wa-btn:hover { background: #1da851; transform: translateY(-2px); }
+  .map-wrap { aspect-ratio: 4/3; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--color-line); }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+  @media (max-width: 1024px) { .contact-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .contact-cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info">
+    <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+    <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+  </div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.svg" alt="AEC Logo">
+    <div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div>
+  </a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / Contact</div>
+    <h1 data-i18n="contact.h1">Get in Touch</h1>
+    <p data-i18n="contact.lead">We'd love to hear from you. Visit our campus, call, message us on WhatsApp or send a quick enquiry.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- LEFT: details + map -->
+      <div>
+        <div class="contact-cards">
+          <div class="ccard">
+            <div class="ico">📍</div>
+            <h4 data-i18n="contact.addr.t">Address</h4>
+            <p data-i18n="contact.addr.p">Emana, Yaoundé<br>Behind the Presidency,<br>after the Government Bilingual High School</p>
+          </div>
+          <div class="ccard">
+            <div class="ico">🕐</div>
+            <h4 data-i18n="contact.hours.t">Office Hours</h4>
+            <p data-i18n="contact.hours.p">Mon–Fri: 7:00 – 17:00<br>Sat: 8:00 – 13:00<br>Sun: Closed</p>
+          </div>
+          <div class="ccard">
+            <div class="ico">📞</div>
+            <h4 data-i18n="contact.phone.t">Phone</h4>
+            <p><a href="tel:+237677637429">+237 677 637 429</a><br><a href="tel:+237679688792">+237 679 688 792</a></p>
+          </div>
+          <div class="ccard">
+            <div class="ico">✉</div>
+            <h4 data-i18n="contact.email.t">Email</h4>
+            <p><a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a><br><a href="mailto:admissions@ambassadors-edu.cm">admissions@ambassadors-edu.cm</a></p>
+          </div>
+        </div>
+
+        <h4 style="color: var(--color-royal-deep); margin-bottom: 8px;" data-i18n="contact.wa.t">💬 Chat on WhatsApp</h4>
+        <p style="color: var(--color-muted); font-size: 14px; margin-bottom: 12px;" data-i18n="contact.wa.p">Get instant answers from our admissions team — usually within minutes during office hours.</p>
+        <div class="wa-buttons">
+          <a class="wa-btn" href="#" data-wa-num="237677637429">💬 +237 677 637 429</a>
+          <a class="wa-btn" href="#" data-wa-num="237679688792">💬 +237 679 688 792</a>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <h4 style="color: var(--color-royal-deep); margin-bottom: 12px;" data-i18n="contact.map.t">Find Us</h4>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=Emana+Yaound%C3%A9+Cameroon&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="AEC Location Map"></iframe>
+          </div>
+          <p style="font-size: 13px; color: var(--color-muted); margin-top: 8px;" data-i18n="contact.map.note">Pin shows the Emana neighbourhood. Look for the AEC sign behind the Presidency, after the Government Bilingual High School.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: form -->
+      <div>
+        <div style="background: linear-gradient(135deg, var(--color-royal-deep), var(--color-royal)); padding: 36px; border-radius: var(--radius-md); color: #fff;">
+          <h3 style="color: var(--color-gold); margin-bottom: 8px;" data-i18n="contact.form.t">Send Us a Message</h3>
+          <p style="opacity: 0.85; margin-bottom: 24px; font-size: 14px;" data-i18n="contact.form.p">Fill the form below and we'll respond within one working day.</p>
+
+          <form id="contactForm" novalidate>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+              <div>
+                <label style="font-size: 13px; opacity: 0.8;" data-i18n="form.name">Full Name</label>
+                <input type="text" name="name" required style="width:100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color:#fff; margin-top: 4px;">
+              </div>
+              <div>
+                <label style="font-size: 13px; opacity: 0.8;" data-i18n="form.phone">Phone</label>
+                <input type="tel" name="phone" required style="width:100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color:#fff; margin-top: 4px;">
+              </div>
+            </div>
+            <div style="margin-bottom: 14px;">
+              <label style="font-size: 13px; opacity: 0.8;" data-i18n="form.email">Email</label>
+              <input type="email" name="email" required style="width:100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color:#fff; margin-top: 4px;">
+            </div>
+            <div style="margin-bottom: 14px;">
+              <label style="font-size: 13px; opacity: 0.8;" data-i18n="form.subject">Subject</label>
+              <select name="subject" style="width:100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color:#fff; margin-top: 4px;">
+                <option style="color:#000" data-i18n="form.s.adm">Admissions enquiry</option>
+                <option style="color:#000" data-i18n="form.s.fees">Fees &amp; payments</option>
+                <option style="color:#000" data-i18n="form.s.visit">Schedule a campus visit</option>
+                <option style="color:#000" data-i18n="form.s.career">Careers / employment</option>
+                <option style="color:#000" data-i18n="form.s.other">Other</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 18px;">
+              <label style="font-size: 13px; opacity: 0.8;" data-i18n="form.msg">Your message</label>
+              <textarea name="message" rows="5" required style="width:100%; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color:#fff; margin-top: 4px; resize: vertical;"></textarea>
+            </div>
+            <!-- honeypot anti-spam -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+            <button type="submit" class="btn btn-gold" style="width: 100%;" data-i18n="form.send">Send Message</button>
+            <p id="formStatus" style="margin-top: 14px; font-size: 14px; min-height: 20px;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé, Cameroon.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche" data-i18n="lvl1.t">Crèche</a></li>
+      <li><a href="academics.html#primary" data-i18n="lvl3.t">Primary</a></li>
+      <li><a href="academics.html#secondary" data-i18n="lvl4.t">Secondary</a></li>
+      <li><a href="academics.html#high" data-i18n="lvl5.t">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Get in Touch</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const f = e.target;
+    if (f.website.value) return; // honeypot
+    const status = document.getElementById('formStatus');
+    status.style.color = '#7DD3FC';
+    status.textContent = '⏳ Sending…';
+    setTimeout(() => {
+      status.style.color = '#86EFAC';
+      status.textContent = '✓ Thank you! Your message has been received. We will contact you within one working day.';
+      f.reset();
+    }, 800);
+  });
+</script>
+</body>
+</html>

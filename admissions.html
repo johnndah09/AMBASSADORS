@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions — Ambassadors Educational Complex</title>
+<meta name="description" content="Apply online to Ambassadors Educational Complex. Three-step admission process, tuition fees, scholarships and FAQ for the 2026/2027 academic year.">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
+  .step-card { background: #fff; padding: 32px 26px; border-radius: var(--radius-lg); border: 1px solid var(--color-line); position: relative; transition: 0.3s; }
+  .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .step-card .step-num { position: absolute; top: -22px; left: 26px; width: 44px; height: 44px; border-radius: 50%; background: var(--color-gold); color: var(--color-royal-deep); display: flex; align-items: center; justify-content: center; font: 800 1.2rem var(--font-heading); box-shadow: var(--shadow-sm); }
+  .step-card h3 { color: var(--color-royal-deep); margin-bottom: 10px; font-size: 1.2rem; }
+  .step-card p { color: var(--color-muted); }
+  .docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .doc-item { background: #fff; padding: 18px 20px; border-radius: var(--radius-md); border: 1px solid var(--color-line); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+  .doc-item::before { content: '📄'; font-size: 1.4rem; }
+  .form-card { background: #fff; padding: 48px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border-top: 6px solid var(--color-gold); }
+  @media (max-width: 768px) { .step-grid, .docs-grid { grid-template-columns: 1fr; } .form-card { padding: 28px; } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container">
+  <div class="top-info"><span>📍 <span data-i18n="top.location">Emana, Yaoundé</span></span></div>
+  <div class="top-actions">
+    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
+    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+  </div>
+</div></div>
+
+<header class="header"><div class="container">
+  <a href="../index.html" class="brand"><img src="../assets/logo.svg" alt="AEC Logo"><div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div></a>
+  <button class="menu-toggle"><span></span><span></span><span></span></button>
+  <nav class="nav"><ul>
+    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
+    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Home</a> / Admissions</div>
+    <h1 data-i18n="adm.h1">Admissions</h1>
+    <p data-i18n="adm.lead">We welcome families who share our values and want the best for their children. Apply in three simple steps.</p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="section-eyebrow">How to Apply</span>
+      <h2 class="section-title">Three steps to <em>join the family</em></h2>
+    </div>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3 data-i18n="adm.s1.t">Step 1 — Submit Application</h3>
+        <p data-i18n="adm.s1.d">Complete the online application form below or download the PDF. Provide academic records and birth certificate.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3 data-i18n="adm.s2.t">Step 2 — Entrance Assessment</h3>
+        <p data-i18n="adm.s2.d">Children from Class 2 onwards take a short placement test. Younger children attend a friendly observation session.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3 data-i18n="adm.s3.t">Step 3 — Family Interview & Confirmation</h3>
+        <p data-i18n="adm.s3.d">Parents meet with the Head of School. Once admitted, pay the registration fee to confirm placement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIRED DOCS -->
+<section class="section" style="background: #fff;">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="adm.req.t">Required Documents</span>
+      <h2 class="section-title" data-i18n="adm.req.t">Required Documents</h2>
+    </div>
+    <div class="docs-grid">
+      <div class="doc-item" data-i18n="adm.req.1">Completed application form</div>
+      <div class="doc-item" data-i18n="adm.req.2">Birth certificate (copy)</div>
+      <div class="doc-item" data-i18n="adm.req.3">Most recent school report card</div>
+      <div class="doc-item" data-i18n="adm.req.4">Two recent passport photographs</div>
+      <div class="doc-item" data-i18n="adm.req.5">Vaccination record</div>
+      <div class="doc-item" data-i18n="adm.req.6">Transfer certificate (if applicable)</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="adm.fees.t">Tuition & Fees</span>
+      <h2 class="section-title">Transparent <em>fees</em>, flexible payment</h2>
+      <p class="section-sub" data-i18n="adm.fees.note">Fees are payable in three installments. Payment via MTN Mobile Money, Orange Money or bank transfer. Sibling and scholarship discounts available.</p>
+    </div>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th data-i18n="adm.fees.lvl">Level</th>
+          <th data-i18n="adm.fees.tuition">Annual Tuition (FCFA)</th>
+          <th data-i18n="adm.fees.reg">Registration</th>
+          <th>PTA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Crèche / Daycare</strong></td><td>350,000</td><td>50,000</td><td>15,000</td></tr>
+        <tr><td><strong>Nursery</strong></td><td>400,000</td><td>50,000</td><td>15,000</td></tr>
+        <tr><td><strong>Primary</strong></td><td>500,000</td><td>60,000</td><td>20,000</td></tr>
+        <tr><td><strong>Secondary (Form 1 – 5)</strong></td><td>650,000</td><td>75,000</td><td>25,000</td></tr>
+        <tr><td><strong>High School (Form 6 – 7)</strong></td><td>800,000</td><td>100,000</td><td>30,000</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13px; color: var(--color-muted); margin-top: 14px;">* Indicative figures. Final fees confirmed upon admission. Lunch, uniform and bus transport are billed separately.</p>
+    <div class="mt-3" style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <a href="#" class="btn btn-emerald">📥 Download Fee Schedule (PDF)</a>
+      <a href="#" class="btn btn-outline">💰 Pay Online — MTN / Orange Money</a>
+    </div>
+  </div>
+</section>
+
+<!-- ONLINE APPLICATION -->
+<section class="section" id="apply" style="background: linear-gradient(180deg, var(--color-cream) 0%, #fff 100%);">
+  <div class="container" style="max-width: 920px;">
+    <div class="section-head center">
+      <span class="section-eyebrow" data-i18n="adm.form.t">Apply Online</span>
+      <h2 class="section-title" data-i18n="adm.form.t">Apply Online</h2>
+      <p class="section-sub" data-i18n="adm.form.sub">Complete the form below — our admissions team will respond within 48 hours.</p>
+    </div>
+    <div class="form-card">
+      <form data-demo-form>
+        <h3 style="color: var(--color-royal-deep); margin-bottom: 18px;">Student Information</h3>
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="f.first">First Name</label><input type="text" required></div>
+          <div class="form-group"><label data-i18n="f.last">Last Name</label><input type="text" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="f.dob">Date of Birth</label><input type="date" required></div>
+          <div class="form-group"><label>Gender / Sexe</label><select><option>-- Choose --</option><option>Male / Masculin</option><option>Female / Féminin</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="f.level">Level Applied For</label>
+            <select required>
+              <option data-i18n="f.choose">-- Choose --</option>
+              <option>Crèche</option><option>Nursery</option>
+              <option>Primary 1</option><option>Primary 2</option><option>Primary 3</option>
+              <option>Primary 4</option><option>Primary 5</option><option>Primary 6</option>
+              <option>Form 1 / 6e</option><option>Form 2 / 5e</option><option>Form 3 / 4e</option>
+              <option>Form 4 / 3e</option><option>Form 5 / 2nde</option>
+              <option>Lower 6 / 1ère</option><option>Upper 6 / Tle</option>
+            </select>
+          </div>
+          <div class="form-group"><label data-i18n="f.year">Academic Year</label>
+            <select><option>2026 / 2027</option><option>2027 / 2028</option></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="f.previous">Previous School (if any)</label>
+          <input type="text">
+        </div>
+
+        <h3 style="color: var(--color-royal-deep); margin: 32px 0 18px;">Parent / Guardian Information</h3>
+        <div class="form-row">
+          <div class="form-group"><label data-i18n="f.parent">Parent / Guardian Name</label><input type="text" required></div>
+          <div class="form-group"><label data-i18n="f.relation">Relationship</label>
+            <select><option>Father / Père</option><option>Mother / Mère</option><option>Guardian / Tuteur</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone</label><input type="tel" required placeholder="+237..."></div>
+          <div class="form-group"><label>Email</label><input type="email" required></div>
+        </div>
+        <div class="form-group">
+          <label>Home Address</label>
+          <input type="text">
+        </div>
+        <div class="form-group">
+          <label data-i18n="f.notes">Additional Notes</label>
+          <textarea placeholder="Tell us anything we should know about your child..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 16px;" data-i18n="f.submit">Submit Application</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background: #fff;">
+  <div class="container" style="max-width: 900px;">
+    <div class="section-head center">
+      <span class="section-eyebrow" data-i18n="adm.faq.t">FAQ</span>
+      <h2 class="section-title" data-i18n="adm.faq.t">Frequently Asked Questions</h2>
+    </div>
+    <details class="acc-item" open>
+      <summary data-i18n="adm.faq.q1">When does the academic year begin?</summary>
+      <div class="acc-body" data-i18n="adm.faq.a1">The school year starts in early September and ends in late June, structured into three terms.</div>
+    </details>
+    <details class="acc-item">
+      <summary data-i18n="adm.faq.q2">Do you offer scholarships?</summary>
+      <div class="acc-body" data-i18n="adm.faq.a2">Yes — merit and need-based scholarships are awarded each year. Contact admissions for the application form.</div>
+    </details>
+    <details class="acc-item">
+      <summary data-i18n="adm.faq.q3">What language is used in class?</summary>
+      <div class="acc-body" data-i18n="adm.faq.a3">Our Anglophone and Francophone sections each follow the official Cameroonian curriculum, with cross-language enrichment classes.</div>
+    </details>
+    <details class="acc-item">
+      <summary data-i18n="adm.faq.q4">Is there transport?</summary>
+      <div class="acc-body" data-i18n="adm.faq.a4">Yes, secure school transport is available across Yaoundé. Routes and fees are listed on the Boarding & Transport page.</div>
+    </details>
+    <details class="acc-item">
+      <summary>How are children placed in the right class?</summary>
+      <div class="acc-body">Through a short, age-appropriate placement assessment in core subjects, plus a meeting with parents. We aim for the level where the child will thrive — neither too easy nor too challenging.</div>
+    </details>
+    <details class="acc-item">
+      <summary>Are there sibling discounts?</summary>
+      <div class="acc-body">Yes — families enrolling 2 or more children receive an automatic discount on tuition. Contact admissions for the current rates.</div>
+    </details>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
+      <p data-i18n="foot.about">Premium bilingual school in Yaoundé.</p>
+    </div>
+    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
+      <li><a href="academics.html#creche">Crèche</a></li>
+      <li><a href="academics.html#primary">Primary</a></li>
+      <li><a href="academics.html#high">High School</a></li>
+    </ul></div>
+    <div><h4 data-i18n="foot.contact">Contact</h4>
+      <p>📍 Emana, Yaoundé</p>
+      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+      <p>✉ <a href="mailto:admissions@ambassadors-edu.cm">admissions@ambassadors-edu.cm</a></p>
+    </div>
+  </div>
+  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC.</span></div>
+</div></footer>
+
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>
