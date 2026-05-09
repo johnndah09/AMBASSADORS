@@ -4,6 +4,13 @@ Premium, bilingual (English/French) school website for **Ambassadors Educational
 
 Built as a fast, accessible, SEO-optimized **static site** that deploys to GitHub Pages, Netlify, Vercel, or any web host in seconds — no server, no database, no build step required.
 
+> **✅ Each HTML page is fully self-contained.** All CSS and JavaScript are inlined directly into every `.html` file, so the site works perfectly when:
+> - Opened by double-clicking `index.html` from your Desktop, Downloads, or extracted ZIP
+> - Hosted on GitHub Pages, Netlify, Vercel, or any web server
+> - Sent by email or shared on a USB drive
+>
+> The `css/` and `js/` folders are kept as **source files** for easier editing — when you change them, see "Re-inlining after edits" at the bottom.
+
 ---
 
 ## 🚀 Quick deployment to GitHub Pages
@@ -191,3 +198,30 @@ This site has zero build step, no JavaScript framework and only one external fon
 ---
 
 **Built with care for AEC.** Faith · Vision · Discipline.
+
+---
+
+## 🔧 Re-inlining after editing CSS or JS
+
+If you edit `css/main.css`, `js/translations.js`, or `js/app.js`, you need to re-inline them into every HTML file so the changes take effect when pages are opened locally. Run this Python script (Python 3.x):
+
+```python
+# save as inline.py in the project root, then run: python inline.py
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+css = (ROOT / 'css' / 'main.css').read_text(encoding='utf-8')
+trans = (ROOT / 'js' / 'translations.js').read_text(encoding='utf-8')
+app = (ROOT / 'js' / 'app.js').read_text(encoding='utf-8')
+
+for f in ROOT.rglob('*.html'):
+    s = f.read_text(encoding='utf-8')
+    s = re.sub(r'<style data-inlined="main">.*?</style>', f'<style data-inlined="main">\n{css}\n</style>', s, flags=re.DOTALL)
+    s = re.sub(r'<script data-inlined="translations">.*?</script>', f'<script data-inlined="translations">\n{trans}\n</script>', s, flags=re.DOTALL)
+    s = re.sub(r'<script data-inlined="app">.*?</script>', f'<script data-inlined="app">\n{app}\n</script>', s, flags=re.DOTALL)
+    f.write_text(s, encoding='utf-8')
+print("Done.")
+```
+
+If you prefer not to use the script, you can edit each HTML file directly — the inlined `<style>` and `<script>` blocks are clearly placed in the `<head>` and just before `</body>`.

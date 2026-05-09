@@ -6,7 +6,591 @@
 <title>Login Portal — Ambassadors Educational Complex</title>
 <meta name="description" content="Secure login portal for parents, students and staff at Ambassadors Educational Complex.">
 <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
-<link rel="stylesheet" href="../css/main.css">
+<style data-inlined="main">
+/* ============================================
+   AMBASSADORS EDUCATIONAL COMPLEX - Master CSS
+   Design system: Royal Blue + Gold + Emerald
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-royal: #1A4FBF;
+  --color-royal-dark: #0A3D91;
+  --color-royal-deep: #061F4D;
+  --color-gold: #F4B400;
+  --color-gold-soft: #FFD23F;
+  --color-emerald: #1D8348;
+  --color-red: #C0202B;
+  --color-cream: #FFF8E7;
+  --color-bg: #FAFBFD;
+  --color-ink: #0E1A2B;
+  --color-muted: #5C6A82;
+  --color-line: #E4E9F2;
+  --color-white: #ffffff;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Open Sans', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  --shadow-sm: 0 2px 8px rgba(10, 61, 145, 0.06);
+  --shadow-md: 0 8px 24px rgba(10, 61, 145, 0.10);
+  --shadow-lg: 0 20px 50px rgba(10, 61, 145, 0.14);
+  --shadow-gold: 0 12px 30px rgba(244, 180, 0, 0.35);
+
+  --container: 1240px;
+  --header-height: 90px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--color-royal); text-decoration: none; transition: color 0.2s var(--ease); }
+a:hover { color: var(--color-gold); }
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; color: var(--color-royal-deep); }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+/* ============ TOP BAR ============ */
+.topbar {
+  background: var(--color-royal-deep);
+  color: #fff;
+  font-size: 13.5px;
+  padding: 8px 0;
+  border-bottom: 3px solid var(--color-gold);
+}
+.topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.topbar a { color: #fff; opacity: 0.9; }
+.topbar a:hover { color: var(--color-gold); opacity: 1; }
+.topbar .top-info { display: flex; gap: 22px; flex-wrap: wrap; }
+.topbar .top-info span { display: inline-flex; align-items: center; gap: 6px; }
+.topbar .top-actions { display: flex; gap: 14px; align-items: center; }
+.lang-switch { display: inline-flex; gap: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; padding: 3px; }
+.lang-switch button {
+  background: none; border: 0; padding: 4px 12px; border-radius: 100px;
+  color: #fff; font: 600 12px var(--font-heading); cursor: pointer; opacity: 0.7;
+  transition: all 0.2s var(--ease);
+}
+.lang-switch button.active { background: var(--color-gold); color: var(--color-royal-deep); opacity: 1; }
+
+/* ============ HEADER ============ */
+.header {
+  background: #fff;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s var(--ease);
+}
+.header.scrolled { box-shadow: var(--shadow-md); }
+.header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: var(--header-height);
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { width: 64px; height: 64px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+.brand-text .brand-name {
+  font: 800 18px var(--font-heading); color: var(--color-royal-deep);
+  letter-spacing: -0.3px;
+}
+.brand-text .brand-tag { font-size: 11.5px; color: var(--color-muted); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+
+.nav { display: flex; align-items: center; gap: 6px; }
+.nav > ul { display: flex; list-style: none; gap: 4px; }
+.nav > ul > li { position: relative; }
+.nav > ul > li > a {
+  display: inline-block; padding: 12px 14px;
+  font: 600 14.5px var(--font-heading); color: var(--color-ink);
+  border-radius: var(--radius-sm); transition: all 0.2s var(--ease);
+}
+.nav > ul > li > a:hover { background: var(--color-cream); color: var(--color-royal-dark); }
+.nav > ul > li.has-mega:hover .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.mega {
+  position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(8px);
+  min-width: 540px; background: #fff; box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md); padding: 24px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  opacity: 0; visibility: hidden; transition: all 0.25s var(--ease);
+  border-top: 4px solid var(--color-gold);
+}
+.mega a {
+  display: flex; flex-direction: column; padding: 10px 12px; border-radius: var(--radius-sm);
+  color: var(--color-ink); transition: all 0.2s var(--ease);
+}
+.mega a:hover { background: var(--color-cream); color: var(--color-royal-dark); transform: translateX(4px); }
+.mega a strong { font: 600 14px var(--font-heading); display: block; }
+.mega a small { font-size: 12.5px; color: var(--color-muted); }
+
+.cta-pill {
+  background: var(--color-gold); color: var(--color-royal-deep) !important;
+  padding: 12px 22px !important; border-radius: 100px !important;
+  font-weight: 700 !important; box-shadow: var(--shadow-gold);
+}
+.cta-pill:hover { background: var(--color-gold-soft) !important; transform: translateY(-2px); }
+
+.menu-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.menu-toggle span {
+  display: block; width: 26px; height: 3px; background: var(--color-royal-deep);
+  border-radius: 2px; margin: 5px 0; transition: 0.3s;
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 92vh;
+  display: flex; align-items: center;
+  background:
+    radial-gradient(ellipse at top right, rgba(244,180,0,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(29,131,72,0.12) 0%, transparent 50%),
+    linear-gradient(135deg, #061F4D 0%, #0A3D91 60%, #1A4FBF 100%);
+  color: #fff;
+  padding: 60px 0;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent 0 40px, rgba(255,255,255,0.02) 40px 41px);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 80px;
+  background: var(--color-bg);
+  clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 100%);
+}
+.hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(244,180,0,0.15); border: 1px solid rgba(244,180,0,0.4);
+  padding: 8px 18px; border-radius: 100px;
+  font: 600 13px var(--font-heading); color: var(--color-gold-soft);
+  margin-bottom: 24px;
+}
+.hero-badge .dot { width: 8px; height: 8px; background: var(--color-gold); border-radius: 50%; box-shadow: 0 0 0 4px rgba(244,180,0,0.25); }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+  font-weight: 900; line-height: 1.05; color: #fff;
+  margin-bottom: 24px; letter-spacing: -1px;
+}
+.hero h1 em { font-style: italic; color: var(--color-gold-soft); font-weight: 600; }
+.hero .lead {
+  font-size: 1.18rem; line-height: 1.65; color: rgba(255,255,255,0.88);
+  max-width: 540px; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border: 0; border-radius: 100px;
+  font: 700 14.5px var(--font-heading); cursor: pointer;
+  transition: all 0.25s var(--ease); text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.btn-primary { background: var(--color-gold); color: var(--color-royal-deep); box-shadow: var(--shadow-gold); }
+.btn-primary:hover { background: var(--color-gold-soft); transform: translateY(-3px); color: var(--color-royal-deep); }
+.btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); }
+.btn-ghost:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: var(--color-gold); }
+.btn-emerald { background: var(--color-emerald); color: #fff; }
+.btn-emerald:hover { background: #156836; color: #fff; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--color-royal-dark); border: 2px solid var(--color-royal-dark); }
+.btn-outline:hover { background: var(--color-royal-dark); color: #fff; }
+
+.hero-stats { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.15); }
+.hero-stat .num { font: 800 1.9rem var(--font-display); color: var(--color-gold-soft); display: block; }
+.hero-stat .lbl { font-size: 12.5px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.2px; }
+
+.hero-visual { position: relative; }
+.hero-visual .frame {
+  position: relative; aspect-ratio: 4/5; border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, #1A4FBF 0%, #0A3D91 100%);
+  transform: rotate(-2deg);
+}
+.hero-visual .frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-visual .badge-card {
+  position: absolute; bottom: -20px; left: -30px;
+  background: #fff; padding: 18px 22px; border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg); display: flex; gap: 14px; align-items: center;
+  transform: rotate(2deg);
+}
+.hero-visual .badge-card .icon { width: 48px; height: 48px; border-radius: 50%; background: var(--color-emerald); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; }
+.hero-visual .badge-card .info strong { display: block; font: 700 16px var(--font-heading); color: var(--color-royal-deep); }
+.hero-visual .badge-card .info small { color: var(--color-muted); }
+
+.hero-visual .floater {
+  position: absolute; top: 30px; right: -25px;
+  background: var(--color-gold); color: var(--color-royal-deep);
+  padding: 14px 18px; border-radius: var(--radius-md);
+  font: 700 14px var(--font-heading); box-shadow: var(--shadow-gold);
+  transform: rotate(5deg);
+}
+
+/* ============ SECTION DEFAULTS ============ */
+.section { padding: 100px 0; position: relative; }
+.section-eyebrow {
+  display: inline-block; font: 700 12.5px var(--font-heading);
+  text-transform: uppercase; letter-spacing: 2.5px;
+  color: var(--color-gold); margin-bottom: 14px; padding-left: 36px; position: relative;
+}
+.section-eyebrow::before {
+  content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 2px; background: var(--color-gold);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 900; line-height: 1.1; color: var(--color-royal-deep);
+  margin-bottom: 18px; letter-spacing: -0.8px;
+}
+.section-title em { color: var(--color-gold); font-style: italic; }
+.section-sub { color: var(--color-muted); font-size: 1.08rem; max-width: 700px; margin-bottom: 56px; }
+.section-head { margin-bottom: 56px; }
+.section-head.center { text-align: center; }
+.section-head.center .section-eyebrow { padding: 0; }
+.section-head.center .section-eyebrow::before { display: none; }
+.section-head.center .section-sub { margin-left: auto; margin-right: auto; }
+
+/* ============ WHY US ============ */
+.why { background: #fff; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.why-card {
+  position: relative; padding: 36px 30px;
+  background: #fff; border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  transition: all 0.35s var(--ease);
+  overflow: hidden;
+}
+.why-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-royal));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease);
+}
+.why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.why-card:hover::before { transform: scaleX(1); }
+.why-icon {
+  width: 64px; height: 64px; border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-cream), #fff);
+  border: 1px solid var(--color-line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin-bottom: 22px;
+}
+.why-card h3 { font: 700 1.25rem var(--font-heading); margin-bottom: 12px; color: var(--color-royal-deep); }
+.why-card p { color: var(--color-muted); font-size: 0.96rem; }
+
+/* ============ ACADEMICS LEVELS ============ */
+.levels { background: linear-gradient(180deg, var(--color-bg) 0%, #fff 100%); }
+.levels-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.level-card {
+  background: #fff; border-radius: var(--radius-md);
+  padding: 28px 22px; text-align: center; border: 1px solid var(--color-line);
+  transition: all 0.3s var(--ease); cursor: pointer;
+}
+.level-card:hover {
+  transform: translateY(-8px); box-shadow: var(--shadow-md);
+  border-color: var(--color-gold); background: linear-gradient(180deg, #fff 0%, var(--color-cream) 100%);
+}
+.level-card .lvl-num {
+  font: 900 0.85rem var(--font-heading); color: var(--color-gold);
+  letter-spacing: 2px; margin-bottom: 12px;
+}
+.level-card h4 { font: 700 1.1rem var(--font-heading); color: var(--color-royal-deep); margin-bottom: 8px; }
+.level-card p { font-size: 13.5px; color: var(--color-muted); margin-bottom: 14px; }
+.level-card .age { font: 600 12px var(--font-heading); padding: 4px 12px; border-radius: 100px; background: var(--color-cream); color: var(--color-royal-dark); display: inline-block; }
+
+/* ============ PRINCIPAL ============ */
+.principal { background: var(--color-royal-deep); color: #fff; position: relative; overflow: hidden; }
+.principal::before {
+  content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--color-gold), transparent 70%); opacity: 0.15;
+}
+.principal .container { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+.principal .section-title { color: #fff; }
+.principal .section-eyebrow { color: var(--color-gold-soft); }
+.principal .quote {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.4rem; line-height: 1.55; color: rgba(255,255,255,0.92);
+  margin: 24px 0 28px; padding-left: 24px; border-left: 4px solid var(--color-gold);
+}
+.principal-card {
+  position: relative; aspect-ratio: 4/5;
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-emerald) 100%);
+  box-shadow: var(--shadow-lg);
+}
+.principal-card .info {
+  position: absolute; bottom: 24px; left: 24px; right: 24px;
+  background: rgba(6,31,77,0.85); backdrop-filter: blur(16px);
+  padding: 18px 22px; border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.principal-card .info strong { display: block; font: 700 1.15rem var(--font-heading); color: #fff; }
+.principal-card .info span { color: var(--color-gold-soft); font-size: 0.9rem; }
+.signature { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--color-gold-soft); }
+
+/* ============ NUMBERS BAND ============ */
+.numbers {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-soft) 100%);
+  padding: 60px 0;
+}
+.numbers-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; text-align: center; }
+.numbers-grid .num-item .n { font: 900 2.6rem var(--font-display); color: var(--color-royal-deep); display: block; line-height: 1; }
+.numbers-grid .num-item .l { font: 600 13px var(--font-heading); color: var(--color-royal-deep); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 10px; display: block; opacity: 0.85; }
+
+/* ============ EVENTS / NEWS ============ */
+.news { background: #fff; }
+.news-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+.news-card {
+  position: relative; border-radius: var(--radius-lg); overflow: hidden;
+  background: #fff; border: 1px solid var(--color-line);
+  transition: all 0.35s var(--ease); cursor: pointer;
+}
+.news-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.news-card .img-wrap {
+  aspect-ratio: 16/10; background: linear-gradient(135deg, var(--color-royal) 0%, var(--color-royal-dark) 100%);
+  position: relative; overflow: hidden;
+}
+.news-card .img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5) 100%);
+}
+.news-card.feat .img-wrap { aspect-ratio: 4/3.6; }
+.news-card .tag {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  background: var(--color-gold); color: var(--color-royal-deep);
+  padding: 5px 14px; border-radius: 100px;
+  font: 700 11.5px var(--font-heading); text-transform: uppercase; letter-spacing: 1px;
+}
+.news-card .body { padding: 24px; }
+.news-card .meta { font: 600 12px var(--font-heading); color: var(--color-muted); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 10px; }
+.news-card h3 { font: 700 1.2rem var(--font-heading); margin-bottom: 10px; color: var(--color-royal-deep); transition: color 0.2s; }
+.news-card:hover h3 { color: var(--color-royal); }
+.news-card p { color: var(--color-muted); font-size: 0.92rem; }
+.news-card.feat h3 { font-size: 1.6rem; }
+
+/* ============ TESTIMONIALS ============ */
+.testimonials {
+  background: linear-gradient(135deg, var(--color-cream) 0%, #fff 100%);
+  position: relative;
+}
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.test-card {
+  background: #fff; padding: 32px 28px; border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line); position: relative;
+  transition: all 0.3s var(--ease);
+}
+.test-card::before {
+  content: '"'; position: absolute; top: -10px; left: 24px;
+  font: 900 6rem var(--font-display); color: var(--color-gold); line-height: 1;
+}
+.test-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.test-card .stars { color: var(--color-gold); margin-bottom: 14px; font-size: 1rem; }
+.test-card .quote { font: 400 1rem var(--font-body); color: var(--color-ink); margin-bottom: 20px; line-height: 1.65; font-style: italic; }
+.test-card .author { display: flex; gap: 14px; align-items: center; padding-top: 18px; border-top: 1px solid var(--color-line); }
+.test-card .author .ava {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-royal), var(--color-emerald));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font: 700 1.1rem var(--font-heading);
+}
+.test-card .author strong { display: block; font: 700 14.5px var(--font-heading); color: var(--color-royal-deep); }
+.test-card .author span { font-size: 12.5px; color: var(--color-muted); }
+
+/* ============ CALL TO ACTION ============ */
+.cta-band {
+  background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-royal-dark) 100%);
+  position: relative; overflow: hidden; padding: 80px 0;
+  color: #fff;
+}
+.cta-band::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.cta-band .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; }
+.cta-band h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); color: #fff; margin-bottom: 16px; }
+.cta-band p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 580px; }
+.cta-band .acts { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--color-royal-deep);
+  color: rgba(255,255,255,0.75);
+  padding: 80px 0 0;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 60px; }
+.footer h4 { color: #fff; font: 700 14px var(--font-heading); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+.footer p, .footer li { font-size: 14px; line-height: 1.85; }
+.footer ul { list-style: none; }
+.footer a { color: rgba(255,255,255,0.75); }
+.footer a:hover { color: var(--color-gold); }
+.footer .brand-foot { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.footer .brand-foot img { width: 56px; height: 56px; }
+.footer .brand-foot strong { color: #fff; font: 800 17px var(--font-heading); }
+
+.socials { display: flex; gap: 10px; margin-top: 18px; }
+.socials a {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+  color: #fff; transition: all 0.25s var(--ease);
+}
+.socials a:hover { background: var(--color-gold); color: var(--color-royal-deep); transform: translateY(-3px); }
+
+.newsletter input {
+  width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05);
+  color: #fff; font: 400 14px var(--font-body); margin-bottom: 12px;
+}
+.newsletter input::placeholder { color: rgba(255,255,255,0.45); }
+.newsletter button { width: 100%; }
+
+.copy {
+  border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+  font-size: 13px;
+}
+
+/* ============ FLOATING WHATSAPP ============ */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 99;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+  transition: all 0.3s var(--ease);
+  animation: pulse-wa 2.4s infinite;
+}
+.whatsapp-float:hover { transform: scale(1.1); color: #fff; }
+@keyframes pulse-wa {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5), 0 8px 24px rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 0 0 18px rgba(37,211,102,0), 0 8px 24px rgba(37,211,102,0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 8px 24px rgba(37,211,102,0.4); }
+}
+
+/* ============ PAGE HEADER (sub-pages) ============ */
+.page-hero {
+  background: linear-gradient(135deg, var(--color-royal-deep) 0%, var(--color-royal-dark) 100%);
+  color: #fff; padding: 90px 0 70px; position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+  background: var(--color-bg); clip-path: polygon(0 100%, 100% 100%, 100% 30%, 0 100%);
+}
+.breadcrumbs { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+.breadcrumbs a { color: rgba(255,255,255,0.85); }
+.breadcrumbs a:hover { color: var(--color-gold); }
+.page-hero h1 { font: 900 clamp(2.2rem, 4.4vw, 3.8rem) var(--font-display); color: #fff; margin-bottom: 12px; letter-spacing: -1px; }
+.page-hero p { font-size: 1.15rem; color: rgba(255,255,255,0.85); max-width: 700px; }
+
+/* ============ FORMS ============ */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block; font: 600 13px var(--font-heading); color: var(--color-royal-deep);
+  margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 13px 16px; border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-sm); font: 400 15px var(--font-body); color: var(--color-ink);
+  background: #fff; transition: all 0.2s var(--ease);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: 0; border-color: var(--color-royal); box-shadow: 0 0 0 4px rgba(26,79,191,0.1);
+}
+.form-group textarea { min-height: 130px; resize: vertical; }
+
+/* ============ TABLES ============ */
+table.tbl {
+  width: 100%; border-collapse: collapse; margin: 24px 0;
+  background: #fff; border-radius: var(--radius-md); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+table.tbl th { background: var(--color-royal-deep); color: #fff; padding: 14px 18px; text-align: left; font: 700 13px var(--font-heading); text-transform: uppercase; letter-spacing: 1px; }
+table.tbl td { padding: 14px 18px; border-bottom: 1px solid var(--color-line); font-size: 14.5px; }
+table.tbl tr:last-child td { border-bottom: 0; }
+table.tbl tr:hover { background: var(--color-cream); }
+
+/* ============ ACCORDION ============ */
+.acc-item { background: #fff; border: 1px solid var(--color-line); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+.acc-item summary {
+  padding: 18px 22px; font: 600 1rem var(--font-heading); color: var(--color-royal-deep);
+  cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+}
+.acc-item summary::-webkit-details-marker { display: none; }
+.acc-item summary::after { content: '+'; font-size: 1.5rem; color: var(--color-gold); transition: transform 0.2s; }
+.acc-item[open] summary::after { transform: rotate(45deg); }
+.acc-item .acc-body { padding: 0 22px 20px; color: var(--color-muted); }
+
+/* ============ UTILITIES ============ */
+.hidden { display: none !important; }
+.txt-c { text-align: center; }
+.mt-1 { margin-top: 12px; }
+.mt-2 { margin-top: 24px; }
+.mt-3 { margin-top: 36px; }
+.mb-2 { margin-bottom: 24px; }
+.gap-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.gap-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.in { animation: fadeUp 0.8s var(--ease) forwards; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero .container, .principal .container, .cta-band .container { grid-template-columns: 1fr; }
+  .why-grid, .gap-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .levels-grid { grid-template-columns: repeat(3, 1fr); }
+  .news-grid { grid-template-columns: 1fr 1fr; }
+  .news-card.feat { grid-column: 1 / -1; }
+  .test-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .numbers-grid { grid-template-columns: repeat(3, 1fr); }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 20px; box-shadow: var(--shadow-lg); flex-direction: column; align-items: stretch; }
+  .nav.open { display: flex; }
+  .nav > ul { flex-direction: column; }
+  .menu-toggle { display: block; }
+  .mega { position: static; transform: none; min-width: auto; opacity: 1; visibility: visible; box-shadow: none; padding: 0 0 0 16px; grid-template-columns: 1fr; }
+  .cta-band .acts { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .section { padding: 70px 0; }
+  .why-grid, .gap-grid-2, .gap-grid-3, .levels-grid, .news-grid, .footer-grid, .numbers-grid, .form-row { grid-template-columns: 1fr; }
+  .topbar { font-size: 12px; }
+  .topbar .top-info { gap: 12px; }
+  .hero { min-height: auto; padding: 50px 0; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-stats { gap: 20px; }
+  .brand-text .brand-name { font-size: 15px; }
+  .brand-text .brand-tag { font-size: 10px; }
+  .brand img { width: 52px; height: 52px; }
+  .copy { flex-direction: column; text-align: center; }
+}
+
+</style>
 <style>
   .portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
   .role-card { background: #fff; padding: 36px 28px; border-radius: var(--radius-md); border: 2px solid var(--color-line); text-align: center; cursor: pointer; transition: 0.3s; }
@@ -144,8 +728,626 @@
   <div class="copy"><span data-i18n="foot.copy">© 2026 AEC. All rights reserved.</span> · <a href="privacy.html" data-i18n="foot.privacy">Privacy</a> · <a href="terms.html" data-i18n="foot.terms">Terms</a> · <a href="child-protection.html" data-i18n="foot.cp">Child Protection</a></div>
 </div></footer>
 
-<script src="../js/translations.js"></script>
-<script src="../js/app.js"></script>
+<script data-inlined="translations">
+/* ============================================
+   AEC Website - Bilingual Translations
+   English (en) + French (fr)
+   To edit content, modify the values below.
+   ============================================ */
+
+const TRANSLATIONS = {
+  en: {
+    // Top bar
+    "top.location": "Emana, Yaoundé — Behind the Presidency",
+    "top.hours": "Mon–Fri: 7:00 AM – 5:00 PM",
+    "top.portal": "Portal Login",
+    "top.apply": "Admissions",
+
+    // Navigation
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.about.history": "Our History",
+    "nav.about.history.d": "Founding story & milestones",
+    "nav.about.mission": "Mission & Vision",
+    "nav.about.mission.d": "Where we are headed",
+    "nav.about.values": "Core Values",
+    "nav.about.values.d": "Faith • Vision • Discipline",
+    "nav.about.leadership": "Leadership Team",
+    "nav.about.leadership.d": "Meet our directors",
+    "nav.academics": "Academics",
+    "nav.academics.creche": "Crèche & Nursery",
+    "nav.academics.creche.d": "Ages 1 – 5 years",
+    "nav.academics.primary": "Primary School",
+    "nav.academics.primary.d": "Class 1 to Class 6",
+    "nav.academics.secondary": "Secondary",
+    "nav.academics.secondary.d": "Form 1 – Form 5 / 6e – 3e",
+    "nav.academics.high": "High School",
+    "nav.academics.high.d": "GCE A-Level / Baccalauréat",
+    "nav.admissions": "Admissions",
+    "nav.school_life": "School Life",
+    "nav.results": "Results",
+    "nav.gallery": "Gallery",
+    "nav.news": "News",
+    "nav.contact": "Contact",
+    "nav.apply": "Apply Now",
+
+    // Hero
+    "hero.badge": "Now enrolling for 2026 / 2027 Academic Year",
+    "hero.title": "Where <em>Faith</em>, Vision & Discipline shape future <em>leaders</em>.",
+    "hero.lead": "Ambassadors Educational Complex is a premium bilingual school in Emana, Yaoundé delivering excellence across Anglophone and Francophone curricula — from Crèche to High School.",
+    "hero.cta1": "Apply Online",
+    "hero.cta2": "Book a Campus Tour",
+    "hero.cta3": "Download Prospectus",
+    "hero.stat1": "Years of excellence",
+    "hero.stat2": "Exam success rate",
+    "hero.stat3": "Qualified teachers",
+    "hero.float": "100% Bilingual",
+    "hero.badge_card1": "Ministry Approved",
+    "hero.badge_card2": "Officially recognized",
+
+    // Why us
+    "why.eyebrow": "Why Choose Us",
+    "why.title": "An education that <em>shapes character</em> and unlocks potential.",
+    "why.sub": "We blend rigorous academics with values-based formation, creating confident, articulate, ethical young people ready for university and life.",
+    "why.c1.t": "Bilingual Excellence",
+    "why.c1.d": "Full Anglophone and Francophone curricula taught by certified Cameroonian and international teachers, with daily exposure in both languages.",
+    "why.c2.t": "Modern Learning",
+    "why.c2.d": "STEM labs, coding & robotics clubs, smart classrooms, and digital learning platforms prepare students for the 21st century.",
+    "why.c3.t": "Faith & Character",
+    "why.c3.d": "Daily moral instruction, mentorship, and leadership programs anchored in faith help students grow with purpose and integrity.",
+    "why.c4.t": "Small Class Sizes",
+    "why.c4.d": "We cap classrooms at 25 students so every child receives personal attention, regular feedback and tailored support.",
+    "why.c5.t": "Safe & Secure Campus",
+    "why.c5.d": "Gated, supervised, CCTV-monitored campus with on-site nurse, fire safety, and trained security staff 24/7.",
+    "why.c6.t": "Strong Results",
+    "why.c6.d": "Consistent top performance in BEPC, Probatoire, Baccalauréat, GCE O-Level and A-Level — with university placements every year.",
+
+    // Levels
+    "levels.eyebrow": "Academic Programs",
+    "levels.title": "Education at every <em>stage</em> of your child's journey.",
+    "levels.sub": "Five carefully designed levels, one continuous path of growth — academically, socially, spiritually.",
+    "lvl1.t": "Crèche / Daycare", "lvl1.d": "Safe, loving care with early stimulation.", "lvl1.a": "1 – 3 years",
+    "lvl2.t": "Nursery", "lvl2.d": "Play-based learning and language foundations.", "lvl2.a": "3 – 5 years",
+    "lvl3.t": "Primary", "lvl3.d": "Strong literacy, numeracy and curiosity.", "lvl3.a": "6 – 11 years",
+    "lvl4.t": "Secondary", "lvl4.d": "BEPC, Probatoire & GCE O-Level prep.", "lvl4.a": "11 – 16 years",
+    "lvl5.t": "High School", "lvl5.d": "Baccalauréat & GCE A-Level excellence.", "lvl5.a": "16 – 18 years",
+
+    // Principal
+    "prin.eyebrow": "Principal's Welcome",
+    "prin.title": "A message from our <em>Principal</em>",
+    "prin.quote": "At Ambassadors, every child matters. We don't just prepare students for exams — we prepare them for life. Our motto, Faith • Vision • Discipline, is the compass that guides everything we do.",
+    "prin.body": "I warmly invite you to join our family. Whether your child is starting Crèche or preparing for the Baccalauréat, you'll find here a community where excellence is expected, character is forged, and every dream is taken seriously. Visit us, meet our teachers, walk our campus — and see for yourself.",
+    "prin.signed": "Mr. / Mme. Principal",
+    "prin.role": "Head of School",
+    "prin.cta": "Read full message",
+
+    // Numbers
+    "num1": "Students enrolled", "num2": "Exam success rate", "num3": "Qualified teachers",
+    "num4": "Extracurricular clubs", "num5": "Years of excellence",
+
+    // News
+    "news.eyebrow": "Latest News & Events",
+    "news.title": "What's happening on <em>campus</em>",
+    "news.sub": "Stay connected with our school community — academic milestones, events, and student achievements.",
+    "n1.tag": "Achievement", "n1.date": "March 2026",
+    "n1.t": "AEC students sweep top scores in National Mathematics Olympiad",
+    "n1.d": "Three of our Form 4 students placed in the national top 20, bringing home gold and silver medals after intensive preparation.",
+    "n2.tag": "Event", "n2.date": "April 12, 2026",
+    "n2.t": "Annual Science & Technology Fair",
+    "n2.d": "Students showcase robotics, coding and engineering projects to parents and partners.",
+    "n3.tag": "Notice", "n3.date": "April 18, 2026",
+    "n3.t": "Open Day for prospective families",
+    "n3.d": "Tour the campus, meet the teachers, ask anything. Registration required.",
+    "news.more": "View all news",
+
+    // Testimonials
+    "test.eyebrow": "Parents & Alumni",
+    "test.title": "What our <em>community</em> says",
+    "test.sub": "Real stories from the families who walk this journey with us.",
+    "t1.q": "My daughter joined AEC in Class 3 and the transformation has been remarkable. The teachers know every child by name, and her confidence in both English and French has soared.",
+    "t1.n": "Mrs. Mballa", "t1.r": "Parent — Primary",
+    "t2.q": "I am now studying engineering at the University of Yaoundé thanks to the strong foundation AEC gave me — especially in mathematics and discipline. The teachers are like family.",
+    "t2.n": "Christian N.", "t2.r": "Alumnus — Class of 2023",
+    "t3.q": "We chose AEC because of the values. Faith and discipline are not slogans here — they are lived every day. My twins are thriving.",
+    "t3.n": "Mr. & Mrs. Etoa", "t3.r": "Parents — Nursery & Primary",
+
+    // CTA band
+    "cta.title": "Ready to take the next step?",
+    "cta.body": "Applications for the 2026 / 2027 academic year are now open. Limited spots — apply early to secure placement.",
+    "cta.b1": "Apply Now", "cta.b2": "Speak to Admissions",
+
+    // Footer
+    "foot.about": "Ambassadors Educational Complex is a premium bilingual school in Yaoundé, Cameroon, committed to academic excellence, character formation and Christian values.",
+    "foot.quick": "Quick Links",
+    "foot.programs": "Programs",
+    "foot.contact": "Get in Touch",
+    "foot.newsletter": "Newsletter",
+    "foot.news_d": "Subscribe for academic updates and events.",
+    "foot.email_ph": "Your email address",
+    "foot.subscribe": "Subscribe",
+    "foot.copy": "© 2026 Ambassadors Educational Complex. All rights reserved.",
+    "foot.privacy": "Privacy Policy",
+    "foot.terms": "Terms of Use",
+    "foot.child": "Child Protection",
+
+    // About page
+    "about.h1": "About Our School",
+    "about.lead": "Founded on the pillars of Faith, Vision and Discipline — Ambassadors is more than a school. It is a community.",
+    "about.history.t": "Our Story",
+    "about.history.p1": "Ambassadors Educational Complex was established in Emana, Yaoundé with a clear mission: to deliver high-quality bilingual education accessible to Cameroonian families, while shaping young people of integrity and ambition.",
+    "about.history.p2": "From modest beginnings, we have grown into a thriving complex serving children from Crèche through High School, with a growing alumni network in universities at home and abroad.",
+    "about.mv.t": "Mission & Vision",
+    "about.mv.mission_h": "Our Mission",
+    "about.mv.mission": "To provide rigorous, holistic, bilingual education that develops competent, confident and morally grounded young people prepared to lead in their communities and the world.",
+    "about.mv.vision_h": "Our Vision",
+    "about.mv.vision": "To be the leading bilingual school in Central Africa, recognized for academic excellence, character formation and innovation in teaching.",
+    "about.values.t": "Core Values",
+    "about.val.faith": "Faith — A worldview anchored in moral and spiritual truth.",
+    "about.val.vision": "Vision — Looking beyond today to shape the future.",
+    "about.val.discipline": "Discipline — Order, focus and respect in everything we do.",
+    "about.val.excellence": "Excellence — Always pursuing the highest standard.",
+    "about.val.integrity": "Integrity — Honesty in word and action.",
+    "about.val.respect": "Respect — Honouring every person and every culture.",
+    "about.val.innovation": "Innovation — Embracing modern tools and ideas.",
+    "about.val.leadership": "Leadership — Raising young people who serve and inspire.",
+
+    // Admissions
+    "adm.h1": "Admissions",
+    "adm.lead": "We welcome families who share our values and want the best for their children. Apply in three simple steps.",
+    "adm.s1.t": "Step 1 — Submit Application",
+    "adm.s1.d": "Complete the online application form below or download the PDF. Provide academic records and birth certificate.",
+    "adm.s2.t": "Step 2 — Entrance Assessment",
+    "adm.s2.d": "Children from Class 2 onwards take a short placement test in English, French and Mathematics. Younger children attend a friendly observation session.",
+    "adm.s3.t": "Step 3 — Family Interview & Confirmation",
+    "adm.s3.d": "Parents meet with the Head of School. Once admitted, pay the registration fee to confirm placement.",
+    "adm.req.t": "Required Documents",
+    "adm.req.1": "Completed application form",
+    "adm.req.2": "Birth certificate (copy)",
+    "adm.req.3": "Most recent school report card",
+    "adm.req.4": "Two recent passport photographs",
+    "adm.req.5": "Vaccination record",
+    "adm.req.6": "Transfer certificate (if applicable)",
+    "adm.fees.t": "Tuition & Fees",
+    "adm.fees.note": "Fees are payable in three installments. Payment is accepted via MTN Mobile Money, Orange Money or bank transfer. Sibling and scholarship discounts are available.",
+    "adm.fees.lvl": "Level",
+    "adm.fees.tuition": "Annual Tuition (FCFA)",
+    "adm.fees.reg": "Registration",
+    "adm.faq.t": "Frequently Asked Questions",
+    "adm.faq.q1": "When does the academic year begin?",
+    "adm.faq.a1": "The school year starts in early September and ends in late June, structured into three terms.",
+    "adm.faq.q2": "Do you offer scholarships?",
+    "adm.faq.a2": "Yes — merit and need-based scholarships are awarded each year. Contact admissions for the application form.",
+    "adm.faq.q3": "What language is used in class?",
+    "adm.faq.a3": "Our Anglophone and Francophone sections each follow the official Cameroonian curriculum, with cross-language enrichment classes.",
+    "adm.faq.q4": "Is there transport?",
+    "adm.faq.a4": "Yes, secure school transport is available across Yaoundé. Routes and fees are listed on the Boarding & Transport page.",
+    "adm.form.t": "Apply Online",
+    "adm.form.sub": "Complete the form below — our admissions team will respond within 48 hours.",
+
+    // Contact
+    "contact.h1": "Contact Us",
+    "contact.lead": "We'd love to hear from you. Visit us, write to us, or chat instantly on WhatsApp.",
+    "contact.address.t": "Address",
+    "contact.address.v": "Emana, Yaoundé — Behind the Presidency, after Government Bilingual High School",
+    "contact.phone.t": "Phone & WhatsApp",
+    "contact.email.t": "Email",
+    "contact.hours.t": "Office Hours",
+    "contact.hours.v": "Monday – Friday: 7:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 12:00 PM",
+    "contact.form.t": "Send a Message",
+    "contact.form.name": "Full Name", "contact.form.email": "Email", "contact.form.phone": "Phone",
+    "contact.form.subject": "Subject", "contact.form.message": "Your Message", "contact.form.submit": "Send Message",
+    "contact.wa": "Chat on WhatsApp",
+
+    // Gallery
+    "gal.h1": "Gallery",
+    "gal.lead": "Moments from our classrooms, our events and our community life.",
+    "gal.tab.all": "All", "gal.tab.class": "Classrooms", "gal.tab.events": "Events",
+    "gal.tab.sports": "Sports", "gal.tab.grad": "Graduation", "gal.tab.trips": "Excursions",
+
+    // School life
+    "life.h1": "School Life",
+    "life.lead": "Beyond the classroom, our students grow through clubs, sports, music, arts, faith and service.",
+
+    // Results
+    "results.h1": "Results & Achievements",
+    "results.lead": "Our students consistently perform among the top in national and international assessments.",
+
+    // Form labels (shared)
+    "f.first": "First Name", "f.last": "Last Name", "f.dob": "Date of Birth",
+    "f.parent": "Parent / Guardian Name", "f.relation": "Relationship",
+    "f.level": "Level Applied For", "f.year": "Academic Year",
+    "f.previous": "Previous School (if any)", "f.notes": "Additional Notes",
+    "f.submit": "Submit Application",
+    "f.choose": "-- Choose --"
+  },
+
+  fr: {
+    // Top bar
+    "top.location": "Emana, Yaoundé — Derrière la Présidence",
+    "top.hours": "Lun–Ven: 7h00 – 17h00",
+    "top.portal": "Connexion Portail",
+    "top.apply": "Admissions",
+
+    // Navigation
+    "nav.home": "Accueil",
+    "nav.about": "À Propos",
+    "nav.about.history": "Notre Histoire",
+    "nav.about.history.d": "Origines et étapes clés",
+    "nav.about.mission": "Mission & Vision",
+    "nav.about.mission.d": "Notre cap pour demain",
+    "nav.about.values": "Valeurs",
+    "nav.about.values.d": "Foi • Vision • Discipline",
+    "nav.about.leadership": "Direction",
+    "nav.about.leadership.d": "Notre équipe dirigeante",
+    "nav.academics": "Académique",
+    "nav.academics.creche": "Crèche & Maternelle",
+    "nav.academics.creche.d": "1 à 5 ans",
+    "nav.academics.primary": "Primaire",
+    "nav.academics.primary.d": "CP au CM2",
+    "nav.academics.secondary": "Secondaire",
+    "nav.academics.secondary.d": "6e – 3e / Form 1 – 5",
+    "nav.academics.high": "Lycée",
+    "nav.academics.high.d": "Baccalauréat / GCE A-Level",
+    "nav.admissions": "Admissions",
+    "nav.school_life": "Vie Scolaire",
+    "nav.results": "Résultats",
+    "nav.gallery": "Galerie",
+    "nav.news": "Actualités",
+    "nav.contact": "Contact",
+    "nav.apply": "Inscrivez-vous",
+
+    // Hero
+    "hero.badge": "Inscriptions ouvertes pour l'année scolaire 2026 / 2027",
+    "hero.title": "Là où la <em>Foi</em>, la Vision et la Discipline forgent les <em>leaders</em> de demain.",
+    "hero.lead": "Ambassadors Educational Complex est une école bilingue de premier plan située à Emana, Yaoundé. Excellence garantie dans les programmes anglophone et francophone — de la crèche au lycée.",
+    "hero.cta1": "Postuler en ligne",
+    "hero.cta2": "Visiter le Campus",
+    "hero.cta3": "Télécharger le Prospectus",
+    "hero.stat1": "Années d'excellence",
+    "hero.stat2": "Taux de réussite",
+    "hero.stat3": "Enseignants qualifiés",
+    "hero.float": "100% Bilingue",
+    "hero.badge_card1": "Agréé par le Ministère",
+    "hero.badge_card2": "Officiellement reconnu",
+
+    // Why us
+    "why.eyebrow": "Pourquoi Nous Choisir",
+    "why.title": "Une éducation qui <em>forge le caractère</em> et révèle le potentiel.",
+    "why.sub": "Nous combinons rigueur académique et formation morale pour bâtir des jeunes confiants, réfléchis et prêts pour l'université comme pour la vie.",
+    "why.c1.t": "Excellence Bilingue",
+    "why.c1.d": "Programmes anglophone et francophone complets, dispensés par des enseignants certifiés, avec une exposition quotidienne dans les deux langues.",
+    "why.c2.t": "Apprentissage Moderne",
+    "why.c2.d": "Laboratoires STEM, clubs de codage et de robotique, salles connectées et plateformes numériques pour préparer le 21e siècle.",
+    "why.c3.t": "Foi & Caractère",
+    "why.c3.d": "Instruction morale, mentorat et programmes de leadership ancrés dans la foi pour grandir avec sens et intégrité.",
+    "why.c4.t": "Petits Effectifs",
+    "why.c4.d": "Maximum 25 élèves par classe afin que chaque enfant bénéficie d'une attention personnalisée et d'un suivi régulier.",
+    "why.c5.t": "Campus Sûr",
+    "why.c5.d": "Site clôturé, vidéo-surveillé, infirmier sur place, sécurité formée 24/7 et procédures d'urgence.",
+    "why.c6.t": "Résultats Solides",
+    "why.c6.d": "Performances constantes au BEPC, Probatoire, Baccalauréat, GCE O-Level et A-Level — avec placements universitaires chaque année.",
+
+    // Levels
+    "levels.eyebrow": "Programmes Scolaires",
+    "levels.title": "Une éducation pour chaque <em>étape</em> de la vie de votre enfant.",
+    "levels.sub": "Cinq cycles soigneusement conçus, un parcours continu de croissance — académique, sociale, spirituelle.",
+    "lvl1.t": "Crèche", "lvl1.d": "Accueil sécurisé et stimulation précoce.", "lvl1.a": "1 – 3 ans",
+    "lvl2.t": "Maternelle", "lvl2.d": "Apprentissage par le jeu et bases linguistiques.", "lvl2.a": "3 – 5 ans",
+    "lvl3.t": "Primaire", "lvl3.d": "Lecture, calcul et curiosité solides.", "lvl3.a": "6 – 11 ans",
+    "lvl4.t": "Secondaire", "lvl4.d": "Préparation au BEPC, Probatoire & GCE O-Level.", "lvl4.a": "11 – 16 ans",
+    "lvl5.t": "Lycée", "lvl5.d": "Excellence au Baccalauréat & GCE A-Level.", "lvl5.a": "16 – 18 ans",
+
+    // Principal
+    "prin.eyebrow": "Mot du Directeur",
+    "prin.title": "Un message de notre <em>Direction</em>",
+    "prin.quote": "À Ambassadors, chaque enfant compte. Nous ne préparons pas seulement aux examens — nous préparons à la vie. Notre devise, Foi • Vision • Discipline, est la boussole de tout ce que nous faisons.",
+    "prin.body": "Je vous invite chaleureusement à rejoindre notre famille. Que votre enfant entre en crèche ou prépare le Baccalauréat, vous trouverez ici une communauté où l'excellence est attendue, le caractère est forgé et chaque rêve est pris au sérieux.",
+    "prin.signed": "M. / Mme. la Directrice",
+    "prin.role": "Direction Générale",
+    "prin.cta": "Lire le message complet",
+
+    // Numbers
+    "num1": "Élèves inscrits", "num2": "Taux de réussite", "num3": "Enseignants qualifiés",
+    "num4": "Clubs et activités", "num5": "Années d'excellence",
+
+    // News
+    "news.eyebrow": "Actualités & Événements",
+    "news.title": "Ce qui se passe sur le <em>campus</em>",
+    "news.sub": "Restez connectés à notre communauté — réussites scolaires, événements et succès des élèves.",
+    "n1.tag": "Réussite", "n1.date": "Mars 2026",
+    "n1.t": "Les élèves d'AEC raflent les meilleurs scores de l'Olympiade Nationale de Mathématiques",
+    "n1.d": "Trois élèves de 4e se classent dans le top 20 national, ramenant or et argent après une préparation intense.",
+    "n2.tag": "Événement", "n2.date": "12 avril 2026",
+    "n2.t": "Salon annuel des Sciences et Technologies",
+    "n2.d": "Les élèves présentent leurs projets de robotique, codage et ingénierie aux parents et partenaires.",
+    "n3.tag": "Avis", "n3.date": "18 avril 2026",
+    "n3.t": "Journée Portes Ouvertes pour les futures familles",
+    "n3.d": "Visitez le campus, rencontrez les enseignants, posez vos questions. Inscription requise.",
+    "news.more": "Toutes les actualités",
+
+    // Testimonials
+    "test.eyebrow": "Parents & Anciens",
+    "test.title": "Ce que dit notre <em>communauté</em>",
+    "test.sub": "Histoires vraies des familles qui partagent ce parcours avec nous.",
+    "t1.q": "Ma fille a rejoint AEC en CE2 et la transformation est remarquable. Les enseignants connaissent chaque enfant par son prénom et sa confiance en anglais et en français a explosé.",
+    "t1.n": "Mme Mballa", "t1.r": "Parent — Primaire",
+    "t2.q": "J'étudie aujourd'hui en ingénierie à l'Université de Yaoundé grâce aux bases solides reçues à AEC — surtout en mathématiques et en discipline. Les professeurs sont comme une famille.",
+    "t2.n": "Christian N.", "t2.r": "Ancien — Promotion 2023",
+    "t3.q": "Nous avons choisi AEC pour ses valeurs. Foi et discipline ne sont pas des slogans — elles sont vécues chaque jour. Nos jumeaux s'épanouissent.",
+    "t3.n": "M. et Mme Etoa", "t3.r": "Parents — Maternelle & Primaire",
+
+    // CTA band
+    "cta.title": "Prêt à franchir le pas ?",
+    "cta.body": "Les inscriptions pour l'année scolaire 2026 / 2027 sont ouvertes. Places limitées — postulez tôt pour réserver votre place.",
+    "cta.b1": "Postuler", "cta.b2": "Parler aux Admissions",
+
+    // Footer
+    "foot.about": "Ambassadors Educational Complex est une école bilingue de premier plan à Yaoundé, Cameroun, engagée dans l'excellence académique, la formation du caractère et les valeurs chrétiennes.",
+    "foot.quick": "Liens Rapides",
+    "foot.programs": "Programmes",
+    "foot.contact": "Nous Contacter",
+    "foot.newsletter": "Newsletter",
+    "foot.news_d": "Recevez nos actualités et événements.",
+    "foot.email_ph": "Votre adresse email",
+    "foot.subscribe": "S'abonner",
+    "foot.copy": "© 2026 Ambassadors Educational Complex. Tous droits réservés.",
+    "foot.privacy": "Politique de Confidentialité",
+    "foot.terms": "Conditions d'Utilisation",
+    "foot.child": "Protection de l'Enfance",
+
+    // About page
+    "about.h1": "À Propos de l'École",
+    "about.lead": "Fondée sur les piliers de la Foi, de la Vision et de la Discipline — Ambassadors est plus qu'une école. C'est une communauté.",
+    "about.history.t": "Notre Histoire",
+    "about.history.p1": "Ambassadors Educational Complex a été fondée à Emana, Yaoundé avec une mission claire : offrir une éducation bilingue de haute qualité accessible aux familles camerounaises, tout en formant des jeunes intègres et ambitieux.",
+    "about.history.p2": "De débuts modestes, nous sommes devenus un complexe prospère accueillant les enfants de la crèche au lycée, avec un réseau d'anciens en pleine croissance dans les universités au pays et à l'étranger.",
+    "about.mv.t": "Mission & Vision",
+    "about.mv.mission_h": "Notre Mission",
+    "about.mv.mission": "Offrir une éducation rigoureuse, holistique et bilingue qui forme des jeunes compétents, confiants et moralement ancrés, prêts à diriger dans leurs communautés et dans le monde.",
+    "about.mv.vision_h": "Notre Vision",
+    "about.mv.vision": "Être l'école bilingue de référence en Afrique Centrale, reconnue pour son excellence académique, sa formation du caractère et son innovation pédagogique.",
+    "about.values.t": "Valeurs Fondamentales",
+    "about.val.faith": "Foi — Une vision du monde ancrée dans la vérité morale et spirituelle.",
+    "about.val.vision": "Vision — Regarder au-delà du présent pour façonner l'avenir.",
+    "about.val.discipline": "Discipline — Ordre, concentration et respect en tout.",
+    "about.val.excellence": "Excellence — Toujours viser le plus haut standard.",
+    "about.val.integrity": "Intégrité — Honnêteté en parole et en acte.",
+    "about.val.respect": "Respect — Honorer chaque personne et chaque culture.",
+    "about.val.innovation": "Innovation — Adopter outils et idées modernes.",
+    "about.val.leadership": "Leadership — Former des jeunes qui servent et inspirent.",
+
+    // Admissions
+    "adm.h1": "Admissions",
+    "adm.lead": "Nous accueillons les familles qui partagent nos valeurs et veulent le meilleur pour leurs enfants. Inscrivez-vous en trois étapes simples.",
+    "adm.s1.t": "Étape 1 — Soumettre la candidature",
+    "adm.s1.d": "Remplissez le formulaire en ligne ci-dessous ou téléchargez le PDF. Joignez les bulletins et l'acte de naissance.",
+    "adm.s2.t": "Étape 2 — Test d'entrée",
+    "adm.s2.d": "Les enfants à partir du CE1 passent un court test en anglais, français et mathématiques. Les plus jeunes participent à une séance d'observation amicale.",
+    "adm.s3.t": "Étape 3 — Entretien & confirmation",
+    "adm.s3.d": "Les parents rencontrent la Direction. Une fois admis, le règlement des frais d'inscription confirme la place.",
+    "adm.req.t": "Documents Requis",
+    "adm.req.1": "Formulaire de candidature rempli",
+    "adm.req.2": "Acte de naissance (copie)",
+    "adm.req.3": "Dernier bulletin scolaire",
+    "adm.req.4": "Deux photos d'identité récentes",
+    "adm.req.5": "Carnet de vaccination",
+    "adm.req.6": "Certificat de transfert (le cas échéant)",
+    "adm.fees.t": "Scolarité & Frais",
+    "adm.fees.note": "Les frais sont payables en trois tranches. MTN Mobile Money, Orange Money et virement bancaire sont acceptés. Réductions fratrie et bourses disponibles.",
+    "adm.fees.lvl": "Niveau",
+    "adm.fees.tuition": "Frais Annuels (FCFA)",
+    "adm.fees.reg": "Inscription",
+    "adm.faq.t": "Questions Fréquentes",
+    "adm.faq.q1": "Quand commence l'année scolaire ?",
+    "adm.faq.a1": "L'année débute début septembre et se termine fin juin, structurée en trois trimestres.",
+    "adm.faq.q2": "Offrez-vous des bourses ?",
+    "adm.faq.a2": "Oui — bourses au mérite et sociales accordées chaque année. Contactez les admissions.",
+    "adm.faq.q3": "Quelle langue est utilisée en classe ?",
+    "adm.faq.a3": "Nos sections anglophone et francophone suivent chacune le programme officiel camerounais, avec des cours d'enrichissement croisés.",
+    "adm.faq.q4": "Y a-t-il un transport ?",
+    "adm.faq.a4": "Oui, un transport scolaire sécurisé couvre Yaoundé. Itinéraires et tarifs sur la page Transport.",
+    "adm.form.t": "Postuler en Ligne",
+    "adm.form.sub": "Remplissez le formulaire — l'équipe d'admissions répondra sous 48 heures.",
+
+    // Contact
+    "contact.h1": "Contactez-Nous",
+    "contact.lead": "Nous serons heureux d'échanger avec vous. Visitez-nous, écrivez-nous ou discutez sur WhatsApp.",
+    "contact.address.t": "Adresse",
+    "contact.address.v": "Emana, Yaoundé — Derrière la Présidence, après le Lycée Bilingue",
+    "contact.phone.t": "Téléphone & WhatsApp",
+    "contact.email.t": "Email",
+    "contact.hours.t": "Heures d'Ouverture",
+    "contact.hours.v": "Lundi – Vendredi : 7h00 – 17h00<br>Samedi : 8h00 – 12h00",
+    "contact.form.t": "Envoyer un Message",
+    "contact.form.name": "Nom complet", "contact.form.email": "Email", "contact.form.phone": "Téléphone",
+    "contact.form.subject": "Objet", "contact.form.message": "Votre message", "contact.form.submit": "Envoyer",
+    "contact.wa": "Discuter sur WhatsApp",
+
+    // Gallery
+    "gal.h1": "Galerie",
+    "gal.lead": "Moments capturés en classe, lors d'événements et dans la vie de notre communauté.",
+    "gal.tab.all": "Tout", "gal.tab.class": "Salles de classe", "gal.tab.events": "Événements",
+    "gal.tab.sports": "Sports", "gal.tab.grad": "Remise de diplômes", "gal.tab.trips": "Sorties",
+
+    // School life
+    "life.h1": "Vie Scolaire",
+    "life.lead": "Au-delà des cours, nos élèves grandissent par les clubs, le sport, la musique, les arts, la foi et le service.",
+
+    // Results
+    "results.h1": "Résultats & Réussites",
+    "results.lead": "Nos élèves figurent régulièrement parmi les meilleurs aux évaluations nationales et internationales.",
+
+    // Form labels (shared)
+    "f.first": "Prénom", "f.last": "Nom", "f.dob": "Date de naissance",
+    "f.parent": "Nom du parent / tuteur", "f.relation": "Lien de parenté",
+    "f.level": "Niveau souhaité", "f.year": "Année scolaire",
+    "f.previous": "École précédente (le cas échéant)", "f.notes": "Notes complémentaires",
+    "f.submit": "Soumettre la candidature",
+    "f.choose": "-- Choisir --"
+  }
+};
+
+</script>
+<script data-inlined="app">
+/* ============================================
+   AEC Website - Core Application
+   ============================================ */
+
+// ===== EDITABLE CONFIG (change here anytime) =====
+window.AEC_CONFIG = {
+  schoolName: "Ambassadors Educational Complex",
+  shortName: "AEC",
+  tagline: "Faith • Vision • Discipline",
+
+  // Phone numbers — change anytime, the WhatsApp & call links update automatically
+  phones: [
+    { display: "+237 677 637 429", whatsapp: "237677637429" },
+    { display: "+237 679 688 792", whatsapp: "237679688792" }
+  ],
+
+  // Email
+  emails: ["info@ambassadors-edu.cm", "admissions@ambassadors-edu.cm"],
+
+  // Address
+  address: {
+    full: "Emana, Yaoundé — Behind the Presidency, after Government Bilingual High School",
+    short: "Emana, Yaoundé, Cameroon",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.567!2d11.520!3d3.911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTQnMzkuNiJOIDExwrAzMScxMi4wIkU!5e0!3m2!1sen!2scm!4v1700000000000"
+  },
+
+  // Social links
+  socials: {
+    facebook: "https://facebook.com/",
+    instagram: "https://instagram.com/",
+    youtube: "https://youtube.com/",
+    linkedin: "https://linkedin.com/"
+  },
+
+  // Default WhatsApp greeting
+  waGreeting: {
+    en: "Hello, I would like more information about Ambassadors Educational Complex.",
+    fr: "Bonjour, je souhaite avoir plus d'informations sur Ambassadors Educational Complex."
+  }
+};
+
+// ============ i18n ENGINE ============
+const I18n = {
+  current: localStorage.getItem('aec_lang') || 'en',
+
+  apply() {
+    const lang = TRANSLATIONS[this.current] ? this.current : 'en';
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (TRANSLATIONS[lang][key]) el.innerHTML = TRANSLATIONS[lang][key];
+    });
+
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (TRANSLATIONS[lang][key]) el.placeholder = TRANSLATIONS[lang][key];
+    });
+
+    // Update active button state
+    document.querySelectorAll('.lang-switch button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    // Update WA links to use proper greeting
+    this.refreshWALinks();
+  },
+
+  set(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    this.current = lang;
+    localStorage.setItem('aec_lang', lang);
+    this.apply();
+  },
+
+  refreshWALinks() {
+    const greeting = encodeURIComponent(AEC_CONFIG.waGreeting[this.current] || AEC_CONFIG.waGreeting.en);
+    document.querySelectorAll('a[data-wa-num]').forEach(link => {
+      const num = link.dataset.waNum;
+      link.href = `https://wa.me/${num}?text=${greeting}`;
+    });
+  }
+};
+
+// ============ HEADER SCROLL ============
+function initHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// ============ MOBILE MENU ============
+function initMobileMenu() {
+  const btn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+}
+
+// ============ REVEAL ON SCROLL ============
+function initReveals() {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+// ============ FORM HANDLERS (demo) ============
+function initForms() {
+  document.querySelectorAll('form[data-demo-form]').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const lang = I18n.current;
+      const msg = lang === 'fr'
+        ? 'Merci ! Votre demande a été envoyée. Nous vous contacterons sous 48 heures.'
+        : 'Thank you! Your request has been received. We will be in touch within 48 hours.';
+      alert(msg);
+      form.reset();
+    });
+  });
+}
+
+// ============ BUILD WHATSAPP FLOAT BUTTON ============
+function initWhatsAppFloat() {
+  if (document.querySelector('.whatsapp-float')) return;
+  const a = document.createElement('a');
+  a.className = 'whatsapp-float';
+  a.dataset.waNum = AEC_CONFIG.phones[0].whatsapp;
+  a.title = 'WhatsApp';
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.innerHTML = `<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+  document.body.appendChild(a);
+}
+
+// ============ INIT ALL ============
+document.addEventListener('DOMContentLoaded', () => {
+  I18n.apply();
+  initHeaderScroll();
+  initMobileMenu();
+  initReveals();
+  initForms();
+  initWhatsAppFloat();
+
+  // Bind language buttons
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => I18n.set(btn.dataset.lang));
+  });
+});
+
+</script>
 <script>
   const labels = { parent: 'Parent', student: 'Student', staff: 'Staff' };
   document.querySelectorAll('.role-card').forEach(c => {
