@@ -590,6 +590,442 @@ table.tbl tr:hover { background: var(--color-cream); }
   .copy { flex-direction: column; text-align: center; }
 }
 
+/* ============================================
+   UX/UI ENHANCEMENTS - Additional polish
+   ============================================ */
+
+/* Active nav state */
+.nav > ul > li > a.active {
+  background: var(--color-cream);
+  color: var(--color-royal-dark);
+  position: relative;
+}
+.nav > ul > li > a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 2px;
+}
+.nav > ul > li > a.cta-pill.active::after { display: none; }
+
+/* Topbar polish */
+.topbar .top-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 12px;
+  border: 1px solid rgba(244, 180, 0, 0.4);
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.2s var(--ease);
+}
+.topbar .top-portal:hover {
+  background: var(--color-gold);
+  color: var(--color-royal-deep);
+  border-color: var(--color-gold);
+  opacity: 1;
+}
+.topbar .top-phone { font-weight: 600; }
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-gold);
+  color: var(--color-royal-deep);
+  padding: 12px 20px;
+  z-index: 9999;
+  font-weight: 700;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Mobile drawer with backdrop */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 31, 77, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 98;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s var(--ease);
+}
+.nav-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hamburger animated to X */
+.menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+/* Toast notifications */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+.toast {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(6, 31, 77, 0.18);
+  padding: 16px 22px 16px 18px;
+  min-width: 280px;
+  max-width: 380px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-left: 4px solid var(--color-royal);
+  pointer-events: auto;
+  transform: translateX(120%);
+  transition: transform 0.4s var(--ease);
+}
+.toast.show { transform: translateX(0); }
+.toast.success { border-left-color: var(--color-emerald); }
+.toast.warning { border-left-color: var(--color-gold); }
+.toast.error { border-left-color: var(--color-red); }
+.toast .toast-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cream);
+  font-size: 18px;
+}
+.toast.success .toast-icon { background: rgba(29, 131, 72, 0.12); }
+.toast.warning .toast-icon { background: rgba(244, 180, 0, 0.18); }
+.toast.error .toast-icon { background: rgba(192, 32, 43, 0.1); }
+.toast .toast-body { flex: 1; }
+.toast .toast-title {
+  font: 700 14px var(--font-heading);
+  color: var(--color-royal-deep);
+  margin-bottom: 2px;
+}
+.toast .toast-msg {
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+.toast .toast-close {
+  background: none;
+  border: 0;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
+  line-height: 1;
+  margin-left: 6px;
+}
+
+/* Scroll-to-top button */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-royal-deep);
+  color: var(--color-gold);
+  border: 0;
+  cursor: pointer;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(6, 31, 77, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s var(--ease);
+}
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.scroll-top:hover {
+  background: var(--color-royal);
+  transform: translateY(-3px);
+}
+
+/* Button variants - additional */
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-royal-deep);
+  box-shadow: var(--shadow-gold);
+}
+.btn-gold:hover {
+  background: var(--color-gold-soft);
+  color: var(--color-royal-deep);
+  transform: translateY(-3px);
+}
+.btn-outline-light {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+.btn-outline-light:hover {
+  background: #fff;
+  color: var(--color-royal-deep);
+  border-color: #fff;
+}
+
+/* Form validation states */
+.form-group input:invalid:not(:placeholder-shown):not(:focus),
+.form-group select:invalid:not(:focus),
+.form-group textarea:invalid:not(:placeholder-shown):not(:focus) {
+  border-color: var(--color-red);
+}
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: var(--color-emerald);
+}
+.form-error {
+  display: block;
+  color: var(--color-red);
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+.form-success-msg {
+  background: rgba(29, 131, 72, 0.1);
+  border-left: 4px solid var(--color-emerald);
+  padding: 14px 18px;
+  border-radius: 8px;
+  color: var(--color-royal-deep);
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: -3px;
+  margin-right: 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Footer enhancements */
+.footer .foot-col h4 {
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.footer .foot-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--color-gold);
+}
+.footer ul li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+.footer ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-weight: 700;
+  transition: transform 0.2s var(--ease);
+}
+.footer ul li:hover::before {
+  transform: translateX(3px);
+}
+.footer .foot-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366 !important;
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  transition: all 0.2s var(--ease);
+}
+.footer .foot-wa:hover {
+  background: #25D366;
+  color: #fff !important;
+  border-color: #25D366;
+}
+.foot-legal a {
+  margin: 0 4px;
+  font-size: 12.5px;
+}
+.foot-legal {
+  font-size: 12.5px;
+  opacity: 0.9;
+}
+
+/* Card hover effects more refined */
+.why-card, .level-card, .news-card, .test-card {
+  will-change: transform;
+}
+
+/* Smooth section anchors with header offset */
+[id] {
+  scroll-margin-top: 110px;
+}
+
+/* Better mobile nav drawer */
+@media (max-width: 1024px) {
+  .nav {
+    position: fixed !important;
+    top: 0;
+    right: -320px;
+    bottom: 0;
+    left: auto;
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -8px 0 30px rgba(6, 31, 77, 0.15);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 80px 20px 20px;
+    transition: right 0.35s var(--ease);
+    overflow-y: auto;
+    z-index: 99;
+    display: flex !important;
+  }
+  .nav.open { right: 0; }
+  .nav > ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+  .nav > ul > li {
+    width: 100%;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav > ul > li > a {
+    display: block;
+    padding: 14px 16px;
+    width: 100%;
+    border-radius: 0;
+  }
+  .nav > ul > li > a.cta-pill {
+    margin-top: 12px;
+    text-align: center;
+    border-radius: 100px !important;
+  }
+  .nav > ul > li > a.active::after { display: none; }
+  .nav > ul > li > a.active {
+    background: var(--color-cream);
+    color: var(--color-royal-dark);
+    border-left: 4px solid var(--color-gold);
+  }
+  .mega {
+    position: static;
+    transform: none;
+    min-width: auto;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    padding: 8px 0 8px 16px;
+    grid-template-columns: 1fr;
+    background: var(--color-bg);
+    border-top: 0;
+    border-radius: 0;
+    margin: 0 -16px -1px;
+  }
+  .mega a { padding: 8px 16px; }
+  .mega a small { display: none; }
+  .menu-toggle { display: block; z-index: 100; position: relative; }
+  /* fixed at bottom */
+  .scroll-top { left: auto; right: 24px; bottom: 96px; }
+}
+
+@media (max-width: 640px) {
+  .toast-container { left: 16px; right: 16px; top: 16px; }
+  .toast { min-width: auto; max-width: none; }
+  .topbar .top-actions { gap: 8px; }
+  .topbar .top-portal { padding: 2px 10px; font-size: 11px; }
+  .topbar .top-phone { font-size: 11px; }
+  .copy { flex-direction: column; gap: 8px; text-align: center; }
+  .foot-legal { display: block; line-height: 1.8; }
+}
+
+/* Print friendliness */
+@media print {
+  .topbar, .header, .footer, .whatsapp-float, .scroll-top, .toast-container { display: none !important; }
+}
+
+/* Focus states for keyboard navigation */
+a:focus-visible, button:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(244, 180, 0, 0.5);
+  outline-offset: 2px;
+}
+
+/* Improve hero buttons spacing */
+.hero-actions .btn { min-width: 180px; justify-content: center; }
+
+/* Progress bar at top during page load */
+.page-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-emerald));
+  width: 0%;
+  z-index: 10001;
+  transition: width 0.3s var(--ease);
+}
+
+/* Section dividers */
+.section + .section { border-top: 1px solid transparent; }
+
+/* Improved breadcrumbs */
+.breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.breadcrumbs a { color: rgba(255, 255, 255, 0.85); }
+.breadcrumbs a:hover { color: var(--color-gold); }
+.breadcrumbs::before { content: '🏠'; font-size: 14px; }
+
+/* Section variants */
+.section-alt { background: linear-gradient(180deg, #fff 0%, var(--color-bg) 100%); }
+
 </style>
 <style>
   .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
@@ -607,28 +1043,69 @@ table.tbl tr:hover { background: var(--color-cream); }
 </head>
 <body>
 
-<div class="topbar"><div class="container">
-  <div class="top-info"><span>📍 <span data-i18n="top.location">Emana, Yaoundé</span></span></div>
-  <div class="top-actions">
-    <a href="#" data-wa-num="237677637429">+237 677 637 429</a>
-    <div class="lang-switch"><button data-lang="en">EN</button><button data-lang="fr">FR</button></div>
+<!-- ========== TOP BAR ========== -->
+<div class="topbar">
+  <div class="container">
+    <div class="top-info">
+      <span>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></span>
+      <span>🕐 <span data-i18n="top.hours">Mon–Fri: 7:00 AM – 5:00 PM</span></span>
+    </div>
+    <div class="top-actions">
+      <a href="#" data-wa-num="237677637429" class="top-phone">📞 +237 677 637 429</a>
+      <a href="../pages/portal.html" class="top-portal" data-i18n="topbar.portal">Portal Login</a>
+      <div class="lang-switch" role="group" aria-label="Language switch">
+        <button data-lang="en" aria-label="English">EN</button>
+        <button data-lang="fr" aria-label="Français">FR</button>
+      </div>
+    </div>
   </div>
-</div></div>
+</div>
 
-<header class="header"><div class="container">
-  <a href="../index.html" class="brand"><img src="../assets/logo.svg" alt="AEC Logo"><div class="brand-text"><span class="brand-name">Ambassadors</span><span class="brand-tag">Educational Complex</span></div></a>
-  <button class="menu-toggle"><span></span><span></span><span></span></button>
-  <nav class="nav"><ul>
-    <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-    <li><a href="about.html" data-i18n="nav.about">About</a></li>
-    <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
-    <li><a href="admissions.html" data-i18n="nav.admissions">Admissions</a></li>
-    <li><a href="school-life.html" data-i18n="nav.school_life">School Life</a></li>
-    <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
-    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-    <li><a href="#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
-  </ul></nav>
-</div></header>
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="container">
+    <a href="../index.html" class="brand" aria-label="Ambassadors Educational Complex - Home">
+      <img src="../assets/logo.svg" alt="AEC Logo">
+      <div class="brand-text">
+        <span class="brand-name">Ambassadors</span>
+        <span class="brand-tag">Educational Complex</span>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primaryNav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li class="has-mega">
+          <a href="../pages/about.html" data-i18n="nav.about">About</a>
+          <div class="mega">
+            <a href="../pages/about.html#history"><strong data-i18n="nav.about.history">Our History</strong><small data-i18n="nav.about.history.d">Founding story &amp; milestones</small></a>
+            <a href="../pages/about.html#mission"><strong data-i18n="nav.about.mission">Mission &amp; Vision</strong><small data-i18n="nav.about.mission.d">Where we are headed</small></a>
+            <a href="../pages/about.html#values"><strong data-i18n="nav.about.values">Core Values</strong><small data-i18n="nav.about.values.d">Faith • Vision • Discipline</small></a>
+            <a href="../pages/about.html#leadership"><strong data-i18n="nav.about.leadership">Leadership Team</strong><small data-i18n="nav.about.leadership.d">Meet our directors</small></a>
+          </div>
+        </li>
+        <li class="has-mega">
+          <a href="../pages/academics.html" data-i18n="nav.academics">Academics</a>
+          <div class="mega">
+            <a href="../pages/academics.html#creche"><strong data-i18n="nav.academics.creche">Crèche &amp; Nursery</strong><small data-i18n="nav.academics.creche.d">Ages 1 – 5 years</small></a>
+            <a href="../pages/academics.html#primary"><strong data-i18n="nav.academics.primary">Primary School</strong><small data-i18n="nav.academics.primary.d">Class 1 to Class 6</small></a>
+            <a href="../pages/academics.html#secondary"><strong data-i18n="nav.academics.secondary">Secondary</strong><small data-i18n="nav.academics.secondary.d">Form 1 – Form 5 / 6e – 3e</small></a>
+            <a href="../pages/academics.html#high"><strong data-i18n="nav.academics.high">High School</strong><small data-i18n="nav.academics.high.d">GCE A-Level / Baccalauréat</small></a>
+          </div>
+        </li>
+        <li><a href="../pages/admissions.html" class="active" data-i18n="nav.admissions">Admissions</a></li>
+        <li><a href="../pages/school-life.html" data-i18n="nav.school_life">School Life</a></li>
+        <li><a href="../pages/gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="../pages/news.html" data-i18n="nav.news">News</a></li>
+        <li><a href="../pages/results.html" data-i18n="nav.results">Results</a></li>
+        <li><a href="../pages/contact.html" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="../pages/admissions.html#apply" class="cta-pill" data-i18n="nav.apply">Apply Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <section class="page-hero">
   <div class="container">
@@ -725,7 +1202,7 @@ table.tbl tr:hover { background: var(--color-cream); }
       <p class="section-sub" data-i18n="adm.form.sub">Complete the form below — our admissions team will respond within 48 hours.</p>
     </div>
     <div class="form-card">
-      <form data-demo-form>
+      <form id="admissionForm" data-demo-form>
         <h3 style="color: var(--color-royal-deep); margin-bottom: 18px;">Student Information</h3>
         <div class="form-row">
           <div class="form-group"><label data-i18n="f.first">First Name</label><input type="text" required></div>
@@ -816,30 +1293,71 @@ table.tbl tr:hover { background: var(--color-cream); }
   </div>
 </section>
 
-<footer class="footer"><div class="container">
-  <div class="footer-grid">
-    <div>
-      <div class="brand-foot"><img src="../assets/logo.svg" alt="AEC"><strong>Ambassadors<br>Educational Complex</strong></div>
-      <p data-i18n="foot.about">Premium bilingual school in Yaoundé.</p>
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col">
+        <div class="brand-foot">
+          <img src="../assets/logo.svg" alt="AEC">
+          <strong>Ambassadors<br>Educational Complex</strong>
+        </div>
+        <p data-i18n="foot.about">Ambassadors Educational Complex is a premium bilingual school in Yaoundé, Cameroon, committed to academic excellence, character formation and Christian values.</p>
+        <div class="socials">
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">𝐟</a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.quick">Quick Links</h4>
+        <ul>
+          <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="../pages/admissions.html" data-i18n="nav.admissions">Admissions</a></li>
+          <li><a href="../pages/academics.html" data-i18n="nav.academics">Academics</a></li>
+          <li><a href="../pages/news.html" data-i18n="nav.news">News &amp; Events</a></li>
+          <li><a href="../pages/results.html" data-i18n="nav.results">Results</a></li>
+          <li><a href="../pages/contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.programs">Programs</h4>
+        <ul>
+          <li><a href="../pages/academics.html#creche" data-i18n="nav.academics.creche">Crèche &amp; Nursery</a></li>
+          <li><a href="../pages/academics.html#primary" data-i18n="nav.academics.primary">Primary School</a></li>
+          <li><a href="../pages/academics.html#secondary" data-i18n="nav.academics.secondary">Secondary</a></li>
+          <li><a href="../pages/academics.html#high" data-i18n="nav.academics.high">High School</a></li>
+          <li><a href="../pages/school-life.html" data-i18n="nav.school_life">School Life</a></li>
+          <li><a href="../pages/gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.contact">Get in Touch</h4>
+        <p>📍 <span data-i18n="top.location">Emana, Yaoundé — Behind the Presidency</span></p>
+        <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
+        <p>📞 <a href="tel:+237679688792">+237 679 688 792</a></p>
+        <p>✉ <a href="mailto:info@ambassadors-edu.cm">info@ambassadors-edu.cm</a></p>
+        <p style="margin-top:14px;"><a href="#" data-wa-num="237677637429" class="foot-wa">💬 <span data-i18n="foot.wa">Chat on WhatsApp</span></a></p>
+        <h4 style="margin-top:28px;" data-i18n="foot.newsletter">Newsletter</h4>
+        <form class="newsletter" data-newsletter>
+          <input type="email" required placeholder="Your email" data-i18n-ph="foot.email_ph" aria-label="Email">
+          <button type="submit" class="btn btn-primary" data-i18n="foot.subscribe">Subscribe</button>
+        </form>
+      </div>
     </div>
-    <div><h4 data-i18n="foot.quick">Quick Links</h4><ul>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="academics.html" data-i18n="nav.academics">Academics</a></li>
-      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-    </ul></div>
-    <div><h4 data-i18n="foot.programs">Programs</h4><ul>
-      <li><a href="academics.html#creche">Crèche</a></li>
-      <li><a href="academics.html#primary">Primary</a></li>
-      <li><a href="academics.html#high">High School</a></li>
-    </ul></div>
-    <div><h4 data-i18n="foot.contact">Contact</h4>
-      <p>📍 Emana, Yaoundé</p>
-      <p>📞 <a href="tel:+237677637429">+237 677 637 429</a></p>
-      <p>✉ <a href="mailto:admissions@ambassadors-edu.cm">admissions@ambassadors-edu.cm</a></p>
+    <div class="copy">
+      <span data-i18n="foot.copy">© 2026 Ambassadors Educational Complex. All rights reserved.</span>
+      <span class="foot-legal">
+        <a href="../pages/privacy.html" data-i18n="foot.privacy">Privacy Policy</a> ·
+        <a href="../pages/terms.html" data-i18n="foot.terms">Terms of Use</a> ·
+        <a href="../pages/child-protection.html" data-i18n="foot.child">Child Protection</a> ·
+        <a href="../pages/portal.html" data-i18n="nav.portal">Portal</a> ·
+        <a href="../admin/index.html" data-i18n="nav.admin">Staff Admin</a>
+      </span>
     </div>
   </div>
-  <div class="copy"><span data-i18n="foot.copy">© 2026 AEC.</span></div>
-</div></footer>
+</footer>
 
 <script data-inlined="translations">
 /* ============================================
@@ -883,6 +1401,10 @@ const TRANSLATIONS = {
     "nav.news": "News",
     "nav.contact": "Contact",
     "nav.apply": "Apply Now",
+    "nav.portal": "Portal",
+    "nav.admin": "Staff Admin",
+    "topbar.portal": "Portal Login",
+    "topbar.apply": "Apply Online",
 
     // Hero
     "hero.badge": "Now enrolling for 2026 / 2027 Academic Year",
@@ -1108,6 +1630,10 @@ const TRANSLATIONS = {
     "nav.news": "Actualités",
     "nav.contact": "Contact",
     "nav.apply": "Inscrivez-vous",
+    "nav.portal": "Espace",
+    "nav.admin": "Administration",
+    "topbar.portal": "Espace Connexion",
+    "topbar.apply": "S'inscrire en ligne",
 
     // Hero
     "hero.badge": "Inscriptions ouvertes pour l'année scolaire 2026 / 2027",
@@ -1304,77 +1830,110 @@ const TRANSLATIONS = {
 <script data-inlined="app">
 /* ============================================
    AEC Website - Core Application
+   Comprehensive interactive features
    ============================================ */
 
-// ===== EDITABLE CONFIG (change here anytime) =====
+// ===== EDITABLE CONFIG =====
 window.AEC_CONFIG = {
   schoolName: "Ambassadors Educational Complex",
   shortName: "AEC",
   tagline: "Faith • Vision • Discipline",
-
-  // Phone numbers — change anytime, the WhatsApp & call links update automatically
   phones: [
     { display: "+237 677 637 429", whatsapp: "237677637429" },
     { display: "+237 679 688 792", whatsapp: "237679688792" }
   ],
-
-  // Email
   emails: ["info@ambassadors-edu.cm", "admissions@ambassadors-edu.cm"],
-
-  // Address
   address: {
     full: "Emana, Yaoundé — Behind the Presidency, after Government Bilingual High School",
-    short: "Emana, Yaoundé, Cameroon",
-    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.567!2d11.520!3d3.911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwNTQnMzkuNiJOIDExwrAzMScxMi4wIkU!5e0!3m2!1sen!2scm!4v1700000000000"
+    short: "Emana, Yaoundé, Cameroon"
   },
-
-  // Social links
   socials: {
     facebook: "https://facebook.com/",
     instagram: "https://instagram.com/",
     youtube: "https://youtube.com/",
     linkedin: "https://linkedin.com/"
   },
-
-  // Default WhatsApp greeting
   waGreeting: {
     en: "Hello, I would like more information about Ambassadors Educational Complex.",
     fr: "Bonjour, je souhaite avoir plus d'informations sur Ambassadors Educational Complex."
   }
 };
 
+// ============ TOAST NOTIFICATIONS ============
+const Toast = {
+  container: null,
+  ensure() {
+    if (!this.container) {
+      this.container = document.createElement('div');
+      this.container.className = 'toast-container';
+      this.container.setAttribute('aria-live', 'polite');
+      document.body.appendChild(this.container);
+    }
+  },
+  show(opts) {
+    this.ensure();
+    const { title = '', message = '', type = 'info', duration = 4000 } = opts;
+    const icons = { success: '✓', warning: '⚠', error: '✕', info: 'ℹ' };
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.innerHTML = `
+      <div class="toast-icon">${icons[type] || icons.info}</div>
+      <div class="toast-body">
+        ${title ? `<div class="toast-title">${title}</div>` : ''}
+        <div class="toast-msg">${message}</div>
+      </div>
+      <button class="toast-close" aria-label="Close">×</button>
+    `;
+    this.container.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('show'));
+    const close = () => {
+      t.classList.remove('show');
+      setTimeout(() => t.remove(), 400);
+    };
+    t.querySelector('.toast-close').addEventListener('click', close);
+    if (duration) setTimeout(close, duration);
+  },
+  success(message, title) { this.show({ title, message, type: 'success' }); },
+  error(message, title)   { this.show({ title, message, type: 'error' }); },
+  warning(message, title) { this.show({ title, message, type: 'warning' }); },
+  info(message, title)    { this.show({ title, message, type: 'info' }); }
+};
+window.Toast = Toast;
+
 // ============ i18n ENGINE ============
 const I18n = {
   current: localStorage.getItem('aec_lang') || 'en',
 
   apply() {
-    const lang = TRANSLATIONS[this.current] ? this.current : 'en';
+    const lang = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[this.current]) ? this.current : 'en';
     document.documentElement.lang = lang;
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (TRANSLATIONS[lang][key]) el.innerHTML = TRANSLATIONS[lang][key];
-    });
+    if (typeof TRANSLATIONS !== 'undefined') {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) el.innerHTML = TRANSLATIONS[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) el.placeholder = TRANSLATIONS[lang][key];
+      });
+    }
 
-    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-      const key = el.getAttribute('data-i18n-ph');
-      if (TRANSLATIONS[lang][key]) el.placeholder = TRANSLATIONS[lang][key];
-    });
-
-    // Update active button state
     document.querySelectorAll('.lang-switch button').forEach(b => {
       b.classList.toggle('active', b.dataset.lang === lang);
     });
 
-    // Update WA links to use proper greeting
     this.refreshWALinks();
   },
 
   set(lang) {
-    if (!TRANSLATIONS[lang]) return;
+    if (typeof TRANSLATIONS !== 'undefined' && !TRANSLATIONS[lang]) return;
     this.current = lang;
     localStorage.setItem('aec_lang', lang);
     this.apply();
+    if (window.Toast) {
+      Toast.info(lang === 'fr' ? 'Langue : Français' : 'Language: English');
+    }
   },
 
   refreshWALinks() {
@@ -1382,11 +1941,14 @@ const I18n = {
     document.querySelectorAll('a[data-wa-num]').forEach(link => {
       const num = link.dataset.waNum;
       link.href = `https://wa.me/${num}?text=${greeting}`;
+      link.target = '_blank';
+      link.rel = 'noopener';
     });
   }
 };
+window.I18n = I18n;
 
-// ============ HEADER SCROLL ============
+// ============ HEADER SCROLL EFFECT ============
 function initHeaderScroll() {
   const header = document.querySelector('.header');
   if (!header) return;
@@ -1400,7 +1962,44 @@ function initMobileMenu() {
   const btn = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
   if (!btn || !nav) return;
-  btn.addEventListener('click', () => nav.classList.toggle('open'));
+
+  let backdrop = document.querySelector('.nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  const open = () => {
+    nav.classList.add('open');
+    btn.classList.add('open');
+    backdrop.classList.add('show');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    backdrop.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  btn.addEventListener('click', () => {
+    nav.classList.contains('open') ? close() : open();
+  });
+  backdrop.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) close();
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) close();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) close();
+  });
 }
 
 // ============ REVEAL ON SCROLL ============
@@ -1417,22 +2016,173 @@ function initReveals() {
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 }
 
-// ============ FORM HANDLERS (demo) ============
-function initForms() {
-  document.querySelectorAll('form[data-demo-form]').forEach(form => {
-    form.addEventListener('submit', e => {
+// ============ SCROLL TO TOP ============
+function initScrollTop() {
+  let btn = document.querySelector('.scroll-top');
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.className = 'scroll-top';
+    btn.setAttribute('aria-label', 'Scroll to top');
+    btn.innerHTML = '↑';
+    document.body.appendChild(btn);
+  }
+  const onScroll = () => btn.classList.toggle('show', window.scrollY > 400);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  onScroll();
+}
+
+// ============ SMOOTH SCROLL ============
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (!target) return;
       e.preventDefault();
-      const lang = I18n.current;
-      const msg = lang === 'fr'
-        ? 'Merci ! Votre demande a été envoyée. Nous vous contacterons sous 48 heures.'
-        : 'Thank you! Your request has been received. We will be in touch within 48 hours.';
-      alert(msg);
-      form.reset();
+      const y = target.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      history.pushState(null, '', href);
     });
   });
 }
 
-// ============ BUILD WHATSAPP FLOAT BUTTON ============
+// ============ FORMS ============
+function initForms() {
+  // Generic demo forms
+  document.querySelectorAll('form[data-demo-form]').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      handleDemoSubmit(form);
+    });
+  });
+
+  // Contact form
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      if (contactForm.website && contactForm.website.value) return; // honeypot
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const status = document.getElementById('formStatus');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> ' + (I18n.current === 'fr' ? 'Envoi…' : 'Sending…');
+      }
+      setTimeout(() => {
+        try {
+          const subs = JSON.parse(localStorage.getItem('aec_contact_submissions') || '[]');
+          subs.push({ when: new Date().toISOString(), data: Object.fromEntries(new FormData(contactForm)) });
+          localStorage.setItem('aec_contact_submissions', JSON.stringify(subs));
+        } catch (e) {}
+        if (status) {
+          status.style.color = '#86EFAC';
+          status.textContent = '✓ ' + (I18n.current === 'fr'
+            ? 'Merci ! Votre message a été reçu. Nous vous répondrons sous un jour ouvrable.'
+            : 'Thank you! Your message has been received. We will respond within one working day.');
+        }
+        Toast.success(
+          I18n.current === 'fr' ? 'Nous vous répondrons sous un jour ouvrable.' : 'We will respond within one working day.',
+          I18n.current === 'fr' ? 'Message envoyé !' : 'Message sent!'
+        );
+        contactForm.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = I18n.current === 'fr' ? 'Envoyer le message' : 'Send Message';
+        }
+      }, 900);
+    });
+  }
+
+  // Admission application form
+  const admissionForm = document.getElementById('admissionForm');
+  if (admissionForm) {
+    admissionForm.addEventListener('submit', e => {
+      e.preventDefault();
+      handleDemoSubmit(admissionForm,
+        I18n.current === 'fr'
+          ? 'Demande d\'inscription envoyée ! Notre bureau vous contactera dans les 48 heures pour la suite.'
+          : 'Application submitted! Our office will contact you within 48 hours with next steps.'
+      );
+    });
+  }
+
+  // Newsletter forms
+  document.querySelectorAll('form[data-newsletter]').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const input = form.querySelector('input[type="email"]');
+      if (!input || !input.value) return;
+      const email = input.value;
+      try {
+        const subs = JSON.parse(localStorage.getItem('aec_newsletter') || '[]');
+        if (!subs.includes(email)) subs.push(email);
+        localStorage.setItem('aec_newsletter', JSON.stringify(subs));
+      } catch (e) {}
+      Toast.success(
+        I18n.current === 'fr' ? `${email} a été ajouté à notre liste.` : `${email} added to our newsletter.`,
+        I18n.current === 'fr' ? 'Abonnement réussi !' : 'Subscribed!'
+      );
+      form.reset();
+    });
+  });
+
+  // Login form (portal)
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const status = document.getElementById('loginStatus');
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> ' + (I18n.current === 'fr' ? 'Connexion…' : 'Signing in…');
+      }
+      setTimeout(() => {
+        if (status) {
+          status.style.color = '#0E5C30';
+          status.textContent = '✓ ' + (I18n.current === 'fr'
+            ? 'Démo : en production, ceci se connecte à votre backend sécurisé.'
+            : 'Demo: in production this connects to your secure backend.');
+        }
+        Toast.info(
+          I18n.current === 'fr' ? 'Mode démo : aucune authentification réelle.' : 'Demo mode: no real authentication occurs.',
+          I18n.current === 'fr' ? 'Démonstration' : 'Demo'
+        );
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = I18n.current === 'fr' ? 'Se connecter' : 'Sign In Securely';
+        }
+      }, 800);
+    });
+  }
+}
+
+function handleDemoSubmit(form, customMsg) {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  let orig;
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    orig = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner"></span> ' + (I18n.current === 'fr' ? 'Envoi…' : 'Submitting…');
+  }
+  setTimeout(() => {
+    Toast.success(
+      customMsg || (I18n.current === 'fr'
+        ? 'Votre demande a été reçue. Nous vous contacterons sous 48 heures.'
+        : 'Your request has been received. We will be in touch within 48 hours.'),
+      I18n.current === 'fr' ? 'Merci !' : 'Thank you!'
+    );
+    form.reset();
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = orig;
+    }
+  }, 900);
+}
+
+// ============ FLOATING WHATSAPP ============
 function initWhatsAppFloat() {
   if (document.querySelector('.whatsapp-float')) return;
   const a = document.createElement('a');
@@ -1441,8 +2191,52 @@ function initWhatsAppFloat() {
   a.title = 'WhatsApp';
   a.target = '_blank';
   a.rel = 'noopener';
-  a.innerHTML = `<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+  a.setAttribute('aria-label', 'Chat with us on WhatsApp');
+  a.innerHTML = `<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
   document.body.appendChild(a);
+}
+
+// ============ EXTERNAL LINK SAFETY ============
+function initExternalLinks() {
+  const host = location.hostname;
+  document.querySelectorAll('a[href^="http"]').forEach(a => {
+    try {
+      const u = new URL(a.href);
+      if (u.hostname && u.hostname !== host) {
+        if (!a.target) a.target = '_blank';
+        if (!a.rel) a.rel = 'noopener noreferrer';
+      }
+    } catch (e) {}
+  });
+}
+
+// ============ PAGE PROGRESS BAR ============
+function initPageProgress() {
+  if (document.querySelector('.page-progress')) return;
+  const bar = document.createElement('div');
+  bar.className = 'page-progress';
+  document.body.appendChild(bar);
+  const update = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const scrolled = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = scrolled + '%';
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+// ============ SET ACTIVE NAV BASED ON URL ============
+function initActiveNav() {
+  try {
+    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('.nav > ul > li > a').forEach(a => {
+      const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase().split('#')[0];
+      if (href && href === path && !a.classList.contains('cta-pill')) {
+        a.classList.add('active');
+      }
+    });
+  } catch (e) {}
 }
 
 // ============ INIT ALL ============
@@ -1451,10 +2245,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
   initReveals();
+  initScrollTop();
+  initSmoothScroll();
   initForms();
   initWhatsAppFloat();
+  initExternalLinks();
+  initPageProgress();
+  initActiveNav();
 
-  // Bind language buttons
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.addEventListener('click', () => I18n.set(btn.dataset.lang));
   });
